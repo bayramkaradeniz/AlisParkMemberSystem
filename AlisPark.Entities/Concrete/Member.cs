@@ -14,7 +14,6 @@ namespace AlisPark.Entities.Concrete
         public string MemberSurname { get; set; }
         public string MemberPhone { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
         public decimal Balance { get; set; }
 
     }

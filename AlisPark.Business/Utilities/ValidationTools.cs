@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace AlisPark.Business.Utilities
 {
     class Program
@@ -14,11 +13,13 @@ namespace AlisPark.Business.Utilities
         {
         }
     }
-    public static class ValidationTool
+
+    public class ValidationTools
     {
-        public static void Validate(IValidator validator, object entity)
+        public static void FluentValidate(IValidator validator, object entity)
         {
-            var result = validator.Validate((IValidationContext)entity);
+            var context = new ValidationContext<object>(entity);
+            var result = validator.Validate(context);
             if (result.Errors.Count > 0)
             {
                 throw new ValidationException(result.Errors);

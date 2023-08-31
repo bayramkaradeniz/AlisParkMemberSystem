@@ -13,7 +13,7 @@ namespace AlisPark.Business.ValidationRules.FluentValidation
         //fluent validation
         public MemberValidator()
         {
-            RuleFor(p => p.MemberName).NotEmpty().WithMessage("Ürün ismi boş olamaz");
+            RuleFor(p => p.MemberName).NotEmpty().WithMessage("Üye  ismi boş olamaz");
             RuleFor(p => p.CategoryId).NotEmpty();
             RuleFor(p => p.Balance).NotEmpty();
             RuleFor(p => p.MemberPhone).NotEmpty();

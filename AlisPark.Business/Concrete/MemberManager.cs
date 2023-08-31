@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AlisPark.Business.Concrete
 {
+
     public class MemberManager : IMemberService
     {
         private IMemberDal _memberDal;
@@ -36,23 +37,23 @@ namespace AlisPark.Business.Concrete
             return _memberDal.GetAll(p => p.MemberName.ToLower().Contains(memberName.ToLower()));
         }
 
-        public void Add(Member product)
+        public void Add(Member member)
         {
-            ValidationTool.Validate(new MemberValidator(), product);
-            _memberDal.Add(product);
+            ValidationTools.FluentValidate(new MemberValidator(), member);
+            _memberDal.Add(member);
         }
 
-        public void Update(Member product)
+        public void Update(Member member)
         {
-            ValidationTool.Validate(new MemberValidator(), product);
-            _memberDal.Update(product);
+            ValidationTools.FluentValidate(new MemberValidator(), member);
+            _memberDal.Update(member);
         }
 
-        public void Delete(Member product)
+        public void Delete(Member member)
         {
             try
             {
-                _memberDal.Delete(product);
+                _memberDal.Delete(member);
             }
             catch
             {

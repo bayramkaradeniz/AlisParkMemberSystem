@@ -107,7 +107,7 @@ namespace AlisPark.WebFormsUI
                 MemberName = tbxMemberNameUpdate.Text,
                 MemberSurname = tbxMemberSurnameUpdate.Text,
                 CategoryId = Convert.ToInt32(cbxCategoryUpdate.SelectedValue),
-                Balance = Convert.ToInt16(tbxBalanceUpdate.Text),
+                Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
                 MemberPhone = tbxMemberPhoneUpdate.Text,
             });
             MessageBox.Show("Üye güncellendi!");

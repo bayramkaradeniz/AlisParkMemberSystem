@@ -19,9 +19,6 @@ namespace AlisPark.Entities.Concrete
             this.Property(p => p.MemberName).HasColumnType("varchar").HasMaxLength(30);
             this.Property(p => p.MemberSurname).HasColumnType("varchar").HasMaxLength(30);
             this.Property(p => p.MemberPhone).HasColumnType("varchar").HasMaxLength(20);
-
-
-
         }
     }
 }
