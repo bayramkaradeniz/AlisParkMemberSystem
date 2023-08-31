@@ -55,14 +55,18 @@
   <ItemGroup>
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IEntityRepository.cs" />
+    <Compile Include="Abstract\ILogEntryDal.cs" />
     <Compile Include="Abstract\IMemberDal.cs" />
+    <Compile Include="Abstract\IWorkerDal.cs" />
     <Compile Include="Concrete\AlisParkContext.cs" />
     <Compile Include="Concrete\EfCategoryDal.cs" />
     <Compile Include="Concrete\EfEntityRepositoryBase.cs" />
+    <Compile Include="Concrete\EfLogEntryDal.cs" />
     <Compile Include="Concrete\EfMemberDal.cs" />
-    <Compile Include="Migrations\202308301800577_CreateDatabase.cs" />
-    <Compile Include="Migrations\202308301800577_CreateDatabase.designer.cs">
-      <DependentUpon>202308301800577_CreateDatabase.cs</DependentUpon>
+    <Compile Include="Concrete\EfWorkerDal.cs" />
+    <Compile Include="Migrations\202308311056210_CreateDatabase.cs" />
+    <Compile Include="Migrations\202308311056210_CreateDatabase.designer.cs">
+      <DependentUpon>202308311056210_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -73,15 +77,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308301800577_CreateDatabase.resx">
-      <DependentUpon>202308301800577_CreateDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AlisPark.Entities\AlisPark.Entities.csproj">
       <Project>{82CCDD6E-1B37-4C34-9E6B-254376126069}</Project>
       <Name>AlisPark.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202308311056210_CreateDatabase.resx">
+      <DependentUpon>202308311056210_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

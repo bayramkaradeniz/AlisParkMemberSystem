@@ -12,10 +12,10 @@ namespace AlisPark.Business.Abstract
     {
         List<Member> GetAll();
         List<Member> GetProductsByCategory(int categoryId);
-        List<Member> GetProductsByProductName(string memberName);
-        void Add(Member product);
-        void Update(Member product);
-        void Delete(Member product);
+        List<Member> GetProductsByMemberName(string memberName);
+        void Add(Member member);
+        void Update(Member member);
+        void Delete(Member member);
     }
 
 

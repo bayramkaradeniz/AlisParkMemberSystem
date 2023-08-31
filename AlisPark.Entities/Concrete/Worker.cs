@@ -10,6 +10,7 @@ namespace AlisPark.Entities.Concrete
     public class Worker:IEntity
     {
         public int WorkerId { get; set; }
-        public string WorkerFullName { get; set; }
+        public string WorkerUserName { get; set; }
+        public string Password { get; set; }
     }
 }

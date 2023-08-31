@@ -36,46 +36,57 @@
             this.tbxMemberNameSearch = new System.Windows.Forms.TextBox();
             this.lblMemberName = new System.Windows.Forms.Label();
             this.gbxAddMember = new System.Windows.Forms.GroupBox();
-            this.btnMemberAdd = new System.Windows.Forms.Button();
-            this.cbxCategoryAdd = new System.Windows.Forms.ComboBox();
-            this.lblBalanceAdd = new System.Windows.Forms.Label();
             this.tbxBalanceAdd = new System.Windows.Forms.TextBox();
-            this.tbxMemberSurnameAdd = new System.Windows.Forms.TextBox();
+            this.cbxCategoryAdd = new System.Windows.Forms.ComboBox();
             this.tbxMemberPhoneAdd = new System.Windows.Forms.TextBox();
+            this.tbxMemberSurnameAdd = new System.Windows.Forms.TextBox();
+            this.tbxMemberNameAdd = new System.Windows.Forms.TextBox();
+            this.lblBalanceAdd = new System.Windows.Forms.Label();
             this.lblCategoryAdd = new System.Windows.Forms.Label();
             this.lblMemberPhoneAdd = new System.Windows.Forms.Label();
-            this.lblMemberSurnameAdd = new System.Windows.Forms.Label();
-            this.tbxMemberNameAdd = new System.Windows.Forms.TextBox();
+            this.lblSurnameAdd = new System.Windows.Forms.Label();
             this.lblMemberNameAdd = new System.Windows.Forms.Label();
-            this.gbxUpdate = new System.Windows.Forms.GroupBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.cbxCategoryUpdate = new System.Windows.Forms.ComboBox();
-            this.lblBalanceUpdate = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.gbxLogLogin = new System.Windows.Forms.GroupBox();
+            this.tbxPasswordLogLogin = new System.Windows.Forms.TextBox();
+            this.tbxUserNameLogLogin = new System.Windows.Forms.TextBox();
+            this.lblPasswordLog = new System.Windows.Forms.Label();
+            this.lblUserNameLog = new System.Windows.Forms.Label();
+            this.gbxCurrentWorker = new System.Windows.Forms.GroupBox();
+            this.cbxCurrentWorker = new System.Windows.Forms.ComboBox();
+            this.lblCurrentWorker = new System.Windows.Forms.Label();
+            this.gbxUpdateMember = new System.Windows.Forms.GroupBox();
             this.tbxBalanceUpdate = new System.Windows.Forms.TextBox();
-            this.tbxMemberSurnameUpdate = new System.Windows.Forms.TextBox();
+            this.cbxCategoryUpdate = new System.Windows.Forms.ComboBox();
             this.tbxMemberPhoneUpdate = new System.Windows.Forms.TextBox();
+            this.tbxMemberSurnameUpdate = new System.Windows.Forms.TextBox();
+            this.tbxMemberNameUpdate = new System.Windows.Forms.TextBox();
+            this.lblBalanceUpdate = new System.Windows.Forms.Label();
             this.lblCategoryUpdate = new System.Windows.Forms.Label();
             this.lblMemberPhoneUpdate = new System.Windows.Forms.Label();
             this.lblMemberSurnameUpdate = new System.Windows.Forms.Label();
-            this.tbxMemberNameUpdate = new System.Windows.Forms.TextBox();
             this.lblMemberNameUpdate = new System.Windows.Forms.Label();
-            this.lblRemove = new System.Windows.Forms.Button();
+            this.btnMemberAdd = new System.Windows.Forms.Button();
+            this.btnMemberUpdate = new System.Windows.Forms.Button();
             this.gbxGetByCategoryName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.gbxSearchByMemberName.SuspendLayout();
             this.gbxAddMember.SuspendLayout();
-            this.gbxUpdate.SuspendLayout();
+            this.gbxLogLogin.SuspendLayout();
+            this.gbxCurrentWorker.SuspendLayout();
+            this.gbxUpdateMember.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxGetByCategoryName
             // 
             this.gbxGetByCategoryName.Controls.Add(this.cbxCategory);
             this.gbxGetByCategoryName.Controls.Add(this.lblCategory);
-            this.gbxGetByCategoryName.Location = new System.Drawing.Point(10, 11);
-            this.gbxGetByCategoryName.Margin = new System.Windows.Forms.Padding(2);
+            this.gbxGetByCategoryName.Location = new System.Drawing.Point(13, 14);
+            this.gbxGetByCategoryName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbxGetByCategoryName.Name = "gbxGetByCategoryName";
-            this.gbxGetByCategoryName.Padding = new System.Windows.Forms.Padding(10);
-            this.gbxGetByCategoryName.Size = new System.Drawing.Size(400, 60);
+            this.gbxGetByCategoryName.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.gbxGetByCategoryName.Size = new System.Drawing.Size(533, 74);
             this.gbxGetByCategoryName.TabIndex = 0;
             this.gbxGetByCategoryName.TabStop = false;
             this.gbxGetByCategoryName.Text = "Kategoriye Göre Arama";
@@ -83,20 +94,19 @@
             // cbxCategory
             // 
             this.cbxCategory.FormattingEnabled = true;
-            this.cbxCategory.Location = new System.Drawing.Point(130, 30);
-            this.cbxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxCategory.Location = new System.Drawing.Point(173, 37);
+            this.cbxCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxCategory.Name = "cbxCategory";
-            this.cbxCategory.Size = new System.Drawing.Size(200, 21);
+            this.cbxCategory.Size = new System.Drawing.Size(265, 24);
             this.cbxCategory.TabIndex = 1;
             this.cbxCategory.SelectedIndexChanged += new System.EventHandler(this.cbxCategory_SelectedIndexChanged);
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(15, 30);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCategory.Location = new System.Drawing.Point(20, 37);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(52, 13);
+            this.lblCategory.Size = new System.Drawing.Size(63, 16);
             this.lblCategory.TabIndex = 0;
             this.lblCategory.Text = "Kategori :";
             // 
@@ -105,12 +115,12 @@
             this.dgvMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMember.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvMember.Location = new System.Drawing.Point(10, 151);
-            this.dgvMember.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvMember.Location = new System.Drawing.Point(13, 186);
+            this.dgvMember.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvMember.Name = "dgvMember";
             this.dgvMember.RowHeadersWidth = 51;
             this.dgvMember.RowTemplate.Height = 24;
-            this.dgvMember.Size = new System.Drawing.Size(800, 150);
+            this.dgvMember.Size = new System.Drawing.Size(1067, 185);
             this.dgvMember.TabIndex = 1;
             this.dgvMember.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMember_CellClick);
             // 
@@ -118,276 +128,369 @@
             // 
             this.gbxSearchByMemberName.Controls.Add(this.tbxMemberNameSearch);
             this.gbxSearchByMemberName.Controls.Add(this.lblMemberName);
-            this.gbxSearchByMemberName.Location = new System.Drawing.Point(10, 74);
+            this.gbxSearchByMemberName.Location = new System.Drawing.Point(13, 91);
+            this.gbxSearchByMemberName.Margin = new System.Windows.Forms.Padding(4);
             this.gbxSearchByMemberName.Name = "gbxSearchByMemberName";
-            this.gbxSearchByMemberName.Padding = new System.Windows.Forms.Padding(10);
-            this.gbxSearchByMemberName.Size = new System.Drawing.Size(400, 60);
+            this.gbxSearchByMemberName.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.gbxSearchByMemberName.Size = new System.Drawing.Size(533, 74);
             this.gbxSearchByMemberName.TabIndex = 2;
             this.gbxSearchByMemberName.TabStop = false;
             this.gbxSearchByMemberName.Text = "Üye Adına Göre Arama";
             // 
             // tbxMemberNameSearch
             // 
-            this.tbxMemberNameSearch.Location = new System.Drawing.Point(130, 30);
+            this.tbxMemberNameSearch.Location = new System.Drawing.Point(173, 37);
+            this.tbxMemberNameSearch.Margin = new System.Windows.Forms.Padding(4);
             this.tbxMemberNameSearch.Name = "tbxMemberNameSearch";
-            this.tbxMemberNameSearch.Size = new System.Drawing.Size(200, 20);
+            this.tbxMemberNameSearch.Size = new System.Drawing.Size(265, 22);
             this.tbxMemberNameSearch.TabIndex = 1;
             this.tbxMemberNameSearch.TextChanged += new System.EventHandler(this.tbxMemberNameSearch_TextChanged);
             // 
             // lblMemberName
             // 
             this.lblMemberName.AutoSize = true;
-            this.lblMemberName.Location = new System.Drawing.Point(15, 30);
+            this.lblMemberName.Location = new System.Drawing.Point(20, 37);
+            this.lblMemberName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMemberName.Name = "lblMemberName";
-            this.lblMemberName.Size = new System.Drawing.Size(50, 13);
+            this.lblMemberName.Size = new System.Drawing.Size(61, 16);
             this.lblMemberName.TabIndex = 0;
             this.lblMemberName.Text = "Üye Adı :";
             // 
             // gbxAddMember
             // 
             this.gbxAddMember.Controls.Add(this.btnMemberAdd);
-            this.gbxAddMember.Controls.Add(this.cbxCategoryAdd);
-            this.gbxAddMember.Controls.Add(this.lblBalanceAdd);
             this.gbxAddMember.Controls.Add(this.tbxBalanceAdd);
-            this.gbxAddMember.Controls.Add(this.tbxMemberSurnameAdd);
+            this.gbxAddMember.Controls.Add(this.cbxCategoryAdd);
             this.gbxAddMember.Controls.Add(this.tbxMemberPhoneAdd);
+            this.gbxAddMember.Controls.Add(this.tbxMemberSurnameAdd);
+            this.gbxAddMember.Controls.Add(this.tbxMemberNameAdd);
+            this.gbxAddMember.Controls.Add(this.lblBalanceAdd);
             this.gbxAddMember.Controls.Add(this.lblCategoryAdd);
             this.gbxAddMember.Controls.Add(this.lblMemberPhoneAdd);
-            this.gbxAddMember.Controls.Add(this.lblMemberSurnameAdd);
-            this.gbxAddMember.Controls.Add(this.tbxMemberNameAdd);
+            this.gbxAddMember.Controls.Add(this.lblSurnameAdd);
             this.gbxAddMember.Controls.Add(this.lblMemberNameAdd);
-            this.gbxAddMember.Location = new System.Drawing.Point(10, 289);
+            this.gbxAddMember.Location = new System.Drawing.Point(13, 356);
+            this.gbxAddMember.Margin = new System.Windows.Forms.Padding(4);
             this.gbxAddMember.Name = "gbxAddMember";
-            this.gbxAddMember.Size = new System.Drawing.Size(800, 172);
+            this.gbxAddMember.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxAddMember.Size = new System.Drawing.Size(1067, 212);
             this.gbxAddMember.TabIndex = 3;
             this.gbxAddMember.TabStop = false;
             this.gbxAddMember.Text = "Üye Ekle";
             // 
-            // btnMemberAdd
+            // tbxBalanceAdd
             // 
-            this.btnMemberAdd.Location = new System.Drawing.Point(600, 120);
-            this.btnMemberAdd.Name = "btnMemberAdd";
-            this.btnMemberAdd.Size = new System.Drawing.Size(84, 23);
-            this.btnMemberAdd.TabIndex = 10;
-            this.btnMemberAdd.Text = "Ekle";
-            this.btnMemberAdd.UseVisualStyleBackColor = true;
-            this.btnMemberAdd.Click += new System.EventHandler(this.btnMemberAdd_Click);
+            this.tbxBalanceAdd.Location = new System.Drawing.Point(133, 153);
+            this.tbxBalanceAdd.Name = "tbxBalanceAdd";
+            this.tbxBalanceAdd.Size = new System.Drawing.Size(247, 22);
+            this.tbxBalanceAdd.TabIndex = 20;
             // 
             // cbxCategoryAdd
             // 
             this.cbxCategoryAdd.FormattingEnabled = true;
-            this.cbxCategoryAdd.Location = new System.Drawing.Point(500, 40);
+            this.cbxCategoryAdd.Location = new System.Drawing.Point(667, 92);
             this.cbxCategoryAdd.Name = "cbxCategoryAdd";
-            this.cbxCategoryAdd.Size = new System.Drawing.Size(186, 21);
-            this.cbxCategoryAdd.TabIndex = 9;
+            this.cbxCategoryAdd.Size = new System.Drawing.Size(247, 24);
+            this.cbxCategoryAdd.TabIndex = 19;
+            // 
+            // tbxMemberPhoneAdd
+            // 
+            this.tbxMemberPhoneAdd.Location = new System.Drawing.Point(133, 94);
+            this.tbxMemberPhoneAdd.Name = "tbxMemberPhoneAdd";
+            this.tbxMemberPhoneAdd.Size = new System.Drawing.Size(247, 22);
+            this.tbxMemberPhoneAdd.TabIndex = 18;
+            // 
+            // tbxMemberSurnameAdd
+            // 
+            this.tbxMemberSurnameAdd.Location = new System.Drawing.Point(667, 36);
+            this.tbxMemberSurnameAdd.Name = "tbxMemberSurnameAdd";
+            this.tbxMemberSurnameAdd.Size = new System.Drawing.Size(247, 22);
+            this.tbxMemberSurnameAdd.TabIndex = 17;
+            // 
+            // tbxMemberNameAdd
+            // 
+            this.tbxMemberNameAdd.Location = new System.Drawing.Point(133, 36);
+            this.tbxMemberNameAdd.Name = "tbxMemberNameAdd";
+            this.tbxMemberNameAdd.Size = new System.Drawing.Size(247, 22);
+            this.tbxMemberNameAdd.TabIndex = 16;
             // 
             // lblBalanceAdd
             // 
             this.lblBalanceAdd.AutoSize = true;
-            this.lblBalanceAdd.Location = new System.Drawing.Point(430, 80);
+            this.lblBalanceAdd.Location = new System.Drawing.Point(46, 159);
             this.lblBalanceAdd.Name = "lblBalanceAdd";
-            this.lblBalanceAdd.Size = new System.Drawing.Size(45, 13);
-            this.lblBalanceAdd.TabIndex = 8;
+            this.lblBalanceAdd.Size = new System.Drawing.Size(55, 16);
+            this.lblBalanceAdd.TabIndex = 15;
             this.lblBalanceAdd.Text = "Bakiye :";
-            // 
-            // tbxBalanceAdd
-            // 
-            this.tbxBalanceAdd.Location = new System.Drawing.Point(500, 80);
-            this.tbxBalanceAdd.Name = "tbxBalanceAdd";
-            this.tbxBalanceAdd.Size = new System.Drawing.Size(186, 20);
-            this.tbxBalanceAdd.TabIndex = 7;
-            // 
-            // tbxMemberSurnameAdd
-            // 
-            this.tbxMemberSurnameAdd.Location = new System.Drawing.Point(100, 80);
-            this.tbxMemberSurnameAdd.Name = "tbxMemberSurnameAdd";
-            this.tbxMemberSurnameAdd.Size = new System.Drawing.Size(186, 20);
-            this.tbxMemberSurnameAdd.TabIndex = 6;
-            // 
-            // tbxMemberPhoneAdd
-            // 
-            this.tbxMemberPhoneAdd.Location = new System.Drawing.Point(100, 113);
-            this.tbxMemberPhoneAdd.Name = "tbxMemberPhoneAdd";
-            this.tbxMemberPhoneAdd.Size = new System.Drawing.Size(186, 20);
-            this.tbxMemberPhoneAdd.TabIndex = 5;
             // 
             // lblCategoryAdd
             // 
             this.lblCategoryAdd.AutoSize = true;
-            this.lblCategoryAdd.Location = new System.Drawing.Point(430, 40);
+            this.lblCategoryAdd.Location = new System.Drawing.Point(586, 101);
             this.lblCategoryAdd.Name = "lblCategoryAdd";
-            this.lblCategoryAdd.Size = new System.Drawing.Size(52, 13);
-            this.lblCategoryAdd.TabIndex = 4;
+            this.lblCategoryAdd.Size = new System.Drawing.Size(63, 16);
+            this.lblCategoryAdd.TabIndex = 14;
             this.lblCategoryAdd.Text = "Kategori :";
             // 
             // lblMemberPhoneAdd
             // 
             this.lblMemberPhoneAdd.AutoSize = true;
-            this.lblMemberPhoneAdd.Location = new System.Drawing.Point(30, 120);
+            this.lblMemberPhoneAdd.Location = new System.Drawing.Point(40, 102);
             this.lblMemberPhoneAdd.Name = "lblMemberPhoneAdd";
-            this.lblMemberPhoneAdd.Size = new System.Drawing.Size(49, 13);
-            this.lblMemberPhoneAdd.TabIndex = 3;
+            this.lblMemberPhoneAdd.Size = new System.Drawing.Size(59, 16);
+            this.lblMemberPhoneAdd.TabIndex = 13;
             this.lblMemberPhoneAdd.Text = "Telefon :";
             // 
-            // lblMemberSurnameAdd
+            // lblSurnameAdd
             // 
-            this.lblMemberSurnameAdd.AutoSize = true;
-            this.lblMemberSurnameAdd.Location = new System.Drawing.Point(30, 80);
-            this.lblMemberSurnameAdd.Name = "lblMemberSurnameAdd";
-            this.lblMemberSurnameAdd.Size = new System.Drawing.Size(67, 13);
-            this.lblMemberSurnameAdd.TabIndex = 2;
-            this.lblMemberSurnameAdd.Text = "Üye Soyadı :";
-            // 
-            // tbxMemberNameAdd
-            // 
-            this.tbxMemberNameAdd.Location = new System.Drawing.Point(100, 40);
-            this.tbxMemberNameAdd.Name = "tbxMemberNameAdd";
-            this.tbxMemberNameAdd.Size = new System.Drawing.Size(186, 20);
-            this.tbxMemberNameAdd.TabIndex = 1;
+            this.lblSurnameAdd.AutoSize = true;
+            this.lblSurnameAdd.Location = new System.Drawing.Point(573, 43);
+            this.lblSurnameAdd.Name = "lblSurnameAdd";
+            this.lblSurnameAdd.Size = new System.Drawing.Size(84, 16);
+            this.lblSurnameAdd.TabIndex = 12;
+            this.lblSurnameAdd.Text = "Üye Soyadı :";
             // 
             // lblMemberNameAdd
             // 
             this.lblMemberNameAdd.AutoSize = true;
-            this.lblMemberNameAdd.Location = new System.Drawing.Point(30, 40);
+            this.lblMemberNameAdd.Location = new System.Drawing.Point(40, 43);
             this.lblMemberNameAdd.Name = "lblMemberNameAdd";
-            this.lblMemberNameAdd.Size = new System.Drawing.Size(50, 13);
-            this.lblMemberNameAdd.TabIndex = 0;
+            this.lblMemberNameAdd.Size = new System.Drawing.Size(61, 16);
+            this.lblMemberNameAdd.TabIndex = 11;
             this.lblMemberNameAdd.Text = "Üye Adı :";
             // 
-            // gbxUpdate
+            // btnRemove
             // 
-            this.gbxUpdate.Controls.Add(this.btnUpdate);
-            this.gbxUpdate.Controls.Add(this.cbxCategoryUpdate);
-            this.gbxUpdate.Controls.Add(this.lblBalanceUpdate);
-            this.gbxUpdate.Controls.Add(this.tbxBalanceUpdate);
-            this.gbxUpdate.Controls.Add(this.tbxMemberSurnameUpdate);
-            this.gbxUpdate.Controls.Add(this.tbxMemberPhoneUpdate);
-            this.gbxUpdate.Controls.Add(this.lblCategoryUpdate);
-            this.gbxUpdate.Controls.Add(this.lblMemberPhoneUpdate);
-            this.gbxUpdate.Controls.Add(this.lblMemberSurnameUpdate);
-            this.gbxUpdate.Controls.Add(this.tbxMemberNameUpdate);
-            this.gbxUpdate.Controls.Add(this.lblMemberNameUpdate);
-            this.gbxUpdate.Location = new System.Drawing.Point(10, 467);
-            this.gbxUpdate.Name = "gbxUpdate";
-            this.gbxUpdate.Size = new System.Drawing.Size(800, 172);
-            this.gbxUpdate.TabIndex = 11;
-            this.gbxUpdate.TabStop = false;
-            this.gbxUpdate.Text = "Üye Güncelle";
+            this.btnRemove.Location = new System.Drawing.Point(984, 128);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(80, 40);
+            this.btnRemove.TabIndex = 12;
+            this.btnRemove.Text = "Sil";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click_1);
             // 
-            // btnUpdate
+            // btnLog
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(600, 120);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(84, 23);
-            this.btnUpdate.TabIndex = 10;
-            this.btnUpdate.Text = "Güncelle";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnLog.Location = new System.Drawing.Point(349, 54);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(117, 40);
+            this.btnLog.TabIndex = 14;
+            this.btnLog.Text = "Kayıtlara Gir";
+            this.btnLog.UseVisualStyleBackColor = true;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            // 
+            // gbxLogLogin
+            // 
+            this.gbxLogLogin.Controls.Add(this.tbxPasswordLogLogin);
+            this.gbxLogLogin.Controls.Add(this.tbxUserNameLogLogin);
+            this.gbxLogLogin.Controls.Add(this.lblPasswordLog);
+            this.gbxLogLogin.Controls.Add(this.lblUserNameLog);
+            this.gbxLogLogin.Controls.Add(this.btnLog);
+            this.gbxLogLogin.Location = new System.Drawing.Point(608, 14);
+            this.gbxLogLogin.Name = "gbxLogLogin";
+            this.gbxLogLogin.Size = new System.Drawing.Size(472, 100);
+            this.gbxLogLogin.TabIndex = 15;
+            this.gbxLogLogin.TabStop = false;
+            // 
+            // tbxPasswordLogLogin
+            // 
+            this.tbxPasswordLogLogin.Location = new System.Drawing.Point(98, 51);
+            this.tbxPasswordLogLogin.Name = "tbxPasswordLogLogin";
+            this.tbxPasswordLogLogin.PasswordChar = '*';
+            this.tbxPasswordLogLogin.Size = new System.Drawing.Size(212, 22);
+            this.tbxPasswordLogLogin.TabIndex = 18;
+            // 
+            // tbxUserNameLogLogin
+            // 
+            this.tbxUserNameLogLogin.Location = new System.Drawing.Point(98, 23);
+            this.tbxUserNameLogLogin.Name = "tbxUserNameLogLogin";
+            this.tbxUserNameLogLogin.Size = new System.Drawing.Size(212, 22);
+            this.tbxUserNameLogLogin.TabIndex = 17;
+            // 
+            // lblPasswordLog
+            // 
+            this.lblPasswordLog.AutoSize = true;
+            this.lblPasswordLog.Location = new System.Drawing.Point(7, 54);
+            this.lblPasswordLog.Name = "lblPasswordLog";
+            this.lblPasswordLog.Size = new System.Drawing.Size(34, 16);
+            this.lblPasswordLog.TabIndex = 16;
+            this.lblPasswordLog.Text = "Şifre";
+            // 
+            // lblUserNameLog
+            // 
+            this.lblUserNameLog.AutoSize = true;
+            this.lblUserNameLog.Location = new System.Drawing.Point(7, 22);
+            this.lblUserNameLog.Name = "lblUserNameLog";
+            this.lblUserNameLog.Size = new System.Drawing.Size(85, 16);
+            this.lblUserNameLog.TabIndex = 15;
+            this.lblUserNameLog.Text = "Kullanıcı Adı :";
+            // 
+            // gbxCurrentWorker
+            // 
+            this.gbxCurrentWorker.Controls.Add(this.cbxCurrentWorker);
+            this.gbxCurrentWorker.Controls.Add(this.lblCurrentWorker);
+            this.gbxCurrentWorker.Location = new System.Drawing.Point(608, 120);
+            this.gbxCurrentWorker.Name = "gbxCurrentWorker";
+            this.gbxCurrentWorker.Size = new System.Drawing.Size(357, 53);
+            this.gbxCurrentWorker.TabIndex = 16;
+            this.gbxCurrentWorker.TabStop = false;
+            // 
+            // cbxCurrentWorker
+            // 
+            this.cbxCurrentWorker.FormattingEnabled = true;
+            this.cbxCurrentWorker.Location = new System.Drawing.Point(82, 19);
+            this.cbxCurrentWorker.Name = "cbxCurrentWorker";
+            this.cbxCurrentWorker.Size = new System.Drawing.Size(247, 24);
+            this.cbxCurrentWorker.TabIndex = 1;
+            // 
+            // lblCurrentWorker
+            // 
+            this.lblCurrentWorker.AutoSize = true;
+            this.lblCurrentWorker.Location = new System.Drawing.Point(7, 22);
+            this.lblCurrentWorker.Name = "lblCurrentWorker";
+            this.lblCurrentWorker.Size = new System.Drawing.Size(49, 16);
+            this.lblCurrentWorker.TabIndex = 0;
+            this.lblCurrentWorker.Text = "Yetkili :";
+            // 
+            // gbxUpdateMember
+            // 
+            this.gbxUpdateMember.Controls.Add(this.btnMemberUpdate);
+            this.gbxUpdateMember.Controls.Add(this.tbxBalanceUpdate);
+            this.gbxUpdateMember.Controls.Add(this.cbxCategoryUpdate);
+            this.gbxUpdateMember.Controls.Add(this.tbxMemberPhoneUpdate);
+            this.gbxUpdateMember.Controls.Add(this.tbxMemberSurnameUpdate);
+            this.gbxUpdateMember.Controls.Add(this.tbxMemberNameUpdate);
+            this.gbxUpdateMember.Controls.Add(this.lblBalanceUpdate);
+            this.gbxUpdateMember.Controls.Add(this.lblCategoryUpdate);
+            this.gbxUpdateMember.Controls.Add(this.lblMemberPhoneUpdate);
+            this.gbxUpdateMember.Controls.Add(this.lblMemberSurnameUpdate);
+            this.gbxUpdateMember.Controls.Add(this.lblMemberNameUpdate);
+            this.gbxUpdateMember.Location = new System.Drawing.Point(13, 593);
+            this.gbxUpdateMember.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxUpdateMember.Name = "gbxUpdateMember";
+            this.gbxUpdateMember.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxUpdateMember.Size = new System.Drawing.Size(1067, 227);
+            this.gbxUpdateMember.TabIndex = 21;
+            this.gbxUpdateMember.TabStop = false;
+            this.gbxUpdateMember.Text = "Üye Güncelle";
+            // 
+            // tbxBalanceUpdate
+            // 
+            this.tbxBalanceUpdate.Location = new System.Drawing.Point(133, 153);
+            this.tbxBalanceUpdate.Name = "tbxBalanceUpdate";
+            this.tbxBalanceUpdate.Size = new System.Drawing.Size(247, 22);
+            this.tbxBalanceUpdate.TabIndex = 20;
             // 
             // cbxCategoryUpdate
             // 
             this.cbxCategoryUpdate.FormattingEnabled = true;
-            this.cbxCategoryUpdate.Location = new System.Drawing.Point(500, 40);
+            this.cbxCategoryUpdate.Location = new System.Drawing.Point(667, 92);
             this.cbxCategoryUpdate.Name = "cbxCategoryUpdate";
-            this.cbxCategoryUpdate.Size = new System.Drawing.Size(186, 21);
-            this.cbxCategoryUpdate.TabIndex = 9;
+            this.cbxCategoryUpdate.Size = new System.Drawing.Size(247, 24);
+            this.cbxCategoryUpdate.TabIndex = 19;
+            // 
+            // tbxMemberPhoneUpdate
+            // 
+            this.tbxMemberPhoneUpdate.Location = new System.Drawing.Point(133, 94);
+            this.tbxMemberPhoneUpdate.Name = "tbxMemberPhoneUpdate";
+            this.tbxMemberPhoneUpdate.Size = new System.Drawing.Size(247, 22);
+            this.tbxMemberPhoneUpdate.TabIndex = 18;
+            // 
+            // tbxMemberSurnameUpdate
+            // 
+            this.tbxMemberSurnameUpdate.Location = new System.Drawing.Point(667, 36);
+            this.tbxMemberSurnameUpdate.Name = "tbxMemberSurnameUpdate";
+            this.tbxMemberSurnameUpdate.Size = new System.Drawing.Size(247, 22);
+            this.tbxMemberSurnameUpdate.TabIndex = 17;
+            // 
+            // tbxMemberNameUpdate
+            // 
+            this.tbxMemberNameUpdate.Location = new System.Drawing.Point(133, 36);
+            this.tbxMemberNameUpdate.Name = "tbxMemberNameUpdate";
+            this.tbxMemberNameUpdate.Size = new System.Drawing.Size(247, 22);
+            this.tbxMemberNameUpdate.TabIndex = 16;
             // 
             // lblBalanceUpdate
             // 
             this.lblBalanceUpdate.AutoSize = true;
-            this.lblBalanceUpdate.Location = new System.Drawing.Point(430, 80);
+            this.lblBalanceUpdate.Location = new System.Drawing.Point(46, 159);
             this.lblBalanceUpdate.Name = "lblBalanceUpdate";
-            this.lblBalanceUpdate.Size = new System.Drawing.Size(45, 13);
-            this.lblBalanceUpdate.TabIndex = 8;
+            this.lblBalanceUpdate.Size = new System.Drawing.Size(55, 16);
+            this.lblBalanceUpdate.TabIndex = 15;
             this.lblBalanceUpdate.Text = "Bakiye :";
-            // 
-            // tbxBalanceUpdate
-            // 
-            this.tbxBalanceUpdate.Location = new System.Drawing.Point(500, 80);
-            this.tbxBalanceUpdate.Name = "tbxBalanceUpdate";
-            this.tbxBalanceUpdate.Size = new System.Drawing.Size(186, 20);
-            this.tbxBalanceUpdate.TabIndex = 7;
-            // 
-            // tbxMemberSurnameUpdate
-            // 
-            this.tbxMemberSurnameUpdate.Location = new System.Drawing.Point(100, 80);
-            this.tbxMemberSurnameUpdate.Name = "tbxMemberSurnameUpdate";
-            this.tbxMemberSurnameUpdate.Size = new System.Drawing.Size(186, 20);
-            this.tbxMemberSurnameUpdate.TabIndex = 6;
-            // 
-            // tbxMemberPhoneUpdate
-            // 
-            this.tbxMemberPhoneUpdate.Location = new System.Drawing.Point(100, 113);
-            this.tbxMemberPhoneUpdate.Name = "tbxMemberPhoneUpdate";
-            this.tbxMemberPhoneUpdate.Size = new System.Drawing.Size(186, 20);
-            this.tbxMemberPhoneUpdate.TabIndex = 5;
             // 
             // lblCategoryUpdate
             // 
             this.lblCategoryUpdate.AutoSize = true;
-            this.lblCategoryUpdate.Location = new System.Drawing.Point(430, 40);
+            this.lblCategoryUpdate.Location = new System.Drawing.Point(586, 101);
             this.lblCategoryUpdate.Name = "lblCategoryUpdate";
-            this.lblCategoryUpdate.Size = new System.Drawing.Size(52, 13);
-            this.lblCategoryUpdate.TabIndex = 4;
+            this.lblCategoryUpdate.Size = new System.Drawing.Size(63, 16);
+            this.lblCategoryUpdate.TabIndex = 14;
             this.lblCategoryUpdate.Text = "Kategori :";
             // 
             // lblMemberPhoneUpdate
             // 
             this.lblMemberPhoneUpdate.AutoSize = true;
-            this.lblMemberPhoneUpdate.Location = new System.Drawing.Point(30, 120);
+            this.lblMemberPhoneUpdate.Location = new System.Drawing.Point(40, 102);
             this.lblMemberPhoneUpdate.Name = "lblMemberPhoneUpdate";
-            this.lblMemberPhoneUpdate.Size = new System.Drawing.Size(43, 13);
-            this.lblMemberPhoneUpdate.TabIndex = 3;
-            this.lblMemberPhoneUpdate.Text = "Telefon";
+            this.lblMemberPhoneUpdate.Size = new System.Drawing.Size(59, 16);
+            this.lblMemberPhoneUpdate.TabIndex = 13;
+            this.lblMemberPhoneUpdate.Text = "Telefon :";
             // 
             // lblMemberSurnameUpdate
             // 
             this.lblMemberSurnameUpdate.AutoSize = true;
-            this.lblMemberSurnameUpdate.Location = new System.Drawing.Point(30, 80);
+            this.lblMemberSurnameUpdate.Location = new System.Drawing.Point(573, 43);
             this.lblMemberSurnameUpdate.Name = "lblMemberSurnameUpdate";
-            this.lblMemberSurnameUpdate.Size = new System.Drawing.Size(67, 13);
-            this.lblMemberSurnameUpdate.TabIndex = 2;
+            this.lblMemberSurnameUpdate.Size = new System.Drawing.Size(84, 16);
+            this.lblMemberSurnameUpdate.TabIndex = 12;
             this.lblMemberSurnameUpdate.Text = "Üye Soyadı :";
-            // 
-            // tbxMemberNameUpdate
-            // 
-            this.tbxMemberNameUpdate.Location = new System.Drawing.Point(100, 40);
-            this.tbxMemberNameUpdate.Name = "tbxMemberNameUpdate";
-            this.tbxMemberNameUpdate.Size = new System.Drawing.Size(186, 20);
-            this.tbxMemberNameUpdate.TabIndex = 1;
             // 
             // lblMemberNameUpdate
             // 
             this.lblMemberNameUpdate.AutoSize = true;
-            this.lblMemberNameUpdate.Location = new System.Drawing.Point(30, 40);
+            this.lblMemberNameUpdate.Location = new System.Drawing.Point(40, 43);
             this.lblMemberNameUpdate.Name = "lblMemberNameUpdate";
-            this.lblMemberNameUpdate.Size = new System.Drawing.Size(50, 13);
-            this.lblMemberNameUpdate.TabIndex = 0;
+            this.lblMemberNameUpdate.Size = new System.Drawing.Size(61, 16);
+            this.lblMemberNameUpdate.TabIndex = 11;
             this.lblMemberNameUpdate.Text = "Üye Adı :";
             // 
-            // lblRemove
+            // btnMemberAdd
             // 
-            this.lblRemove.Location = new System.Drawing.Point(750, 11);
-            this.lblRemove.Name = "lblRemove";
-            this.lblRemove.Size = new System.Drawing.Size(60, 30);
-            this.lblRemove.TabIndex = 12;
-            this.lblRemove.Text = "Sil";
-            this.lblRemove.UseVisualStyleBackColor = true;
-            this.lblRemove.Click += new System.EventHandler(this.lblRemove_Click);
+            this.btnMemberAdd.Location = new System.Drawing.Point(829, 153);
+            this.btnMemberAdd.Name = "btnMemberAdd";
+            this.btnMemberAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnMemberAdd.TabIndex = 21;
+            this.btnMemberAdd.Text = "Ekle";
+            this.btnMemberAdd.UseVisualStyleBackColor = true;
+            this.btnMemberAdd.Click += new System.EventHandler(this.btnMemberAdd_Click_1);
+            // 
+            // btnMemberUpdate
+            // 
+            this.btnMemberUpdate.Location = new System.Drawing.Point(839, 152);
+            this.btnMemberUpdate.Name = "btnMemberUpdate";
+            this.btnMemberUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnMemberUpdate.TabIndex = 21;
+            this.btnMemberUpdate.Text = "Güncelle";
+            this.btnMemberUpdate.UseVisualStyleBackColor = true;
+            this.btnMemberUpdate.Click += new System.EventHandler(this.btnMemberUpdate_Click_1);
             // 
             // AlisPark
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(929, 670);
-            this.Controls.Add(this.lblRemove);
-            this.Controls.Add(this.gbxUpdate);
+            this.ClientSize = new System.Drawing.Size(1451, 1047);
+            this.Controls.Add(this.gbxUpdateMember);
+            this.Controls.Add(this.gbxCurrentWorker);
+            this.Controls.Add(this.gbxLogLogin);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.gbxAddMember);
             this.Controls.Add(this.gbxSearchByMemberName);
             this.Controls.Add(this.dgvMember);
             this.Controls.Add(this.gbxGetByCategoryName);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AlisPark";
             this.Text = "Üye İşlemleri";
             this.Load += new System.EventHandler(this.AlisPark_Load);
@@ -398,8 +501,12 @@
             this.gbxSearchByMemberName.PerformLayout();
             this.gbxAddMember.ResumeLayout(false);
             this.gbxAddMember.PerformLayout();
-            this.gbxUpdate.ResumeLayout(false);
-            this.gbxUpdate.PerformLayout();
+            this.gbxLogLogin.ResumeLayout(false);
+            this.gbxLogLogin.PerformLayout();
+            this.gbxCurrentWorker.ResumeLayout(false);
+            this.gbxCurrentWorker.PerformLayout();
+            this.gbxUpdateMember.ResumeLayout(false);
+            this.gbxUpdateMember.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -414,29 +521,38 @@
         private System.Windows.Forms.TextBox tbxMemberNameSearch;
         private System.Windows.Forms.Label lblMemberName;
         private System.Windows.Forms.GroupBox gbxAddMember;
-        private System.Windows.Forms.TextBox tbxMemberSurnameAdd;
-        private System.Windows.Forms.TextBox tbxMemberPhoneAdd;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.GroupBox gbxLogLogin;
+        private System.Windows.Forms.TextBox tbxPasswordLogLogin;
+        private System.Windows.Forms.TextBox tbxUserNameLogLogin;
+        private System.Windows.Forms.Label lblPasswordLog;
+        private System.Windows.Forms.Label lblUserNameLog;
+        private System.Windows.Forms.GroupBox gbxCurrentWorker;
+        private System.Windows.Forms.ComboBox cbxCurrentWorker;
+        private System.Windows.Forms.Label lblCurrentWorker;
+        private System.Windows.Forms.TextBox tbxMemberNameAdd;
+        private System.Windows.Forms.Label lblBalanceAdd;
         private System.Windows.Forms.Label lblCategoryAdd;
         private System.Windows.Forms.Label lblMemberPhoneAdd;
-        private System.Windows.Forms.Label lblMemberSurnameAdd;
-        private System.Windows.Forms.TextBox tbxMemberNameAdd;
+        private System.Windows.Forms.Label lblSurnameAdd;
         private System.Windows.Forms.Label lblMemberNameAdd;
-        private System.Windows.Forms.Button btnMemberAdd;
-        private System.Windows.Forms.ComboBox cbxCategoryAdd;
-        private System.Windows.Forms.Label lblBalanceAdd;
         private System.Windows.Forms.TextBox tbxBalanceAdd;
-        private System.Windows.Forms.GroupBox gbxUpdate;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.ComboBox cbxCategoryUpdate;
-        private System.Windows.Forms.Label lblBalanceUpdate;
+        private System.Windows.Forms.ComboBox cbxCategoryAdd;
+        private System.Windows.Forms.TextBox tbxMemberPhoneAdd;
+        private System.Windows.Forms.TextBox tbxMemberSurnameAdd;
+        private System.Windows.Forms.GroupBox gbxUpdateMember;
         private System.Windows.Forms.TextBox tbxBalanceUpdate;
-        private System.Windows.Forms.TextBox tbxMemberSurnameUpdate;
+        private System.Windows.Forms.ComboBox cbxCategoryUpdate;
         private System.Windows.Forms.TextBox tbxMemberPhoneUpdate;
+        private System.Windows.Forms.TextBox tbxMemberSurnameUpdate;
+        private System.Windows.Forms.TextBox tbxMemberNameUpdate;
+        private System.Windows.Forms.Label lblBalanceUpdate;
         private System.Windows.Forms.Label lblCategoryUpdate;
         private System.Windows.Forms.Label lblMemberPhoneUpdate;
         private System.Windows.Forms.Label lblMemberSurnameUpdate;
-        private System.Windows.Forms.TextBox tbxMemberNameUpdate;
         private System.Windows.Forms.Label lblMemberNameUpdate;
-        private System.Windows.Forms.Button lblRemove;
+        private System.Windows.Forms.Button btnMemberAdd;
+        private System.Windows.Forms.Button btnMemberUpdate;
     }
 }

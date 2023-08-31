@@ -32,7 +32,7 @@ namespace AlisPark.Business.Concrete
             return _memberDal.GetAll(p => p.CategoryId == categoryId);
         }
 
-        public List<Member> GetProductsByProductName(string memberName)
+        public List<Member> GetProductsByMemberName(string memberName)
         {
             return _memberDal.GetAll(p => p.MemberName.ToLower().Contains(memberName.ToLower()));
         }

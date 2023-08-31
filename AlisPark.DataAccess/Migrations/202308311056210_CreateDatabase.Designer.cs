@@ -13,7 +13,7 @@ namespace AlisPark.DataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202308301800577_CreateDatabase"; }
+            get { return "202308311056210_CreateDatabase"; }
         }
         
         string IMigrationMetadata.Source

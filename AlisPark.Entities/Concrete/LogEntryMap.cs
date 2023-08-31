@@ -17,6 +17,6 @@ namespace AlisPark.Entities.Concrete
             this.Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             this.Property(p => p.Description).HasColumnType("varchar").HasMaxLength(500);
-      
+        }
     }
 }

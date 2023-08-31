@@ -20,12 +20,17 @@ namespace AlisPark.WebFormsUI
             InitializeComponent();
             _memberService = InstanceFactory.GetInstance<IMemberService>();
             _categoryService = InstanceFactory.GetInstance<ICategoryService>();
+            _logEntryService = InstanceFactory.GetInstance<ILogEntryService>();
+            _workerService = InstanceFactory.GetInstance<IWorkerService>();
 
         }
         private IMemberService _memberService;
         private ICategoryService _categoryService;
+        private ILogEntryService _logEntryService;
+        private IWorkerService _workerService;
         private void AlisPark_Load(object sender, EventArgs e)
         {
+            
             LoadCategories();
             LoadMembers();
         }
@@ -37,6 +42,7 @@ namespace AlisPark.WebFormsUI
 
         private void LoadCategories()
         {
+
             cbxCategory.DataSource = _categoryService.GetAll();
             cbxCategory.DisplayMember = "CategoryName";
             cbxCategory.ValueMember = "CategoryId";
@@ -49,6 +55,9 @@ namespace AlisPark.WebFormsUI
             cbxCategoryUpdate.DisplayMember = "CategoryName";
             cbxCategoryUpdate.ValueMember = "CategoryId";
 
+            cbxCurrentWorker.DataSource = _workerService.GetAll();
+            cbxCurrentWorker.DisplayMember = "WorkerUserName";
+            cbxCurrentWorker.ValueMember = "WorkerId";
         }
 
         private void cbxCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,51 +77,14 @@ namespace AlisPark.WebFormsUI
         {
             if (!String.IsNullOrEmpty(tbxMemberNameSearch.Text))
             {
-                dgvMember.DataSource = _memberService.GetProductsByProductName(tbxMemberNameSearch.Text);
+                dgvMember.DataSource = _memberService.GetProductsByMemberName(tbxMemberNameSearch.Text);
             }
             else
             {
                 LoadMembers();
             }
-
         }
 
-        private void btnMemberAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _memberService.Add(new Member
-                {
-                    CategoryId = Convert.ToInt32(cbxCategoryAdd.SelectedValue),
-                    MemberName = tbxMemberNameAdd.Text,
-                    MemberSurname = tbxMemberSurnameAdd.Text,
-                    Balance = Convert.ToDecimal(tbxBalanceAdd.Text),
-                    MemberPhone = tbxMemberPhoneAdd.Text
-                });
-                MessageBox.Show("Üye eklendi!");
-                LoadMembers();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            _memberService.Update(new Member
-            {
-                MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
-                MemberName = tbxMemberNameUpdate.Text,
-                MemberSurname = tbxMemberSurnameUpdate.Text,
-                CategoryId = Convert.ToInt32(cbxCategoryUpdate.SelectedValue),
-                Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
-                MemberPhone = tbxMemberPhoneUpdate.Text,
-            });
-            MessageBox.Show("Üye güncellendi!");
-            LoadMembers();
-        }
 
         private void dgvMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -125,7 +97,81 @@ namespace AlisPark.WebFormsUI
 
         }
 
-        private void lblRemove_Click(object sender, EventArgs e)
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            //if (tbxUserNameLogLogin.Text == "admin" && tbxPasswordLogLogin.Text == "Huxx.09")
+            //{
+            //    Logs Logs = new Logs();
+            //    Logs.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Kullanıcı Adı veya Şifre Hatalı");
+            //}
+            Logs Logs = new Logs();
+            Logs.Show();
+
+        }
+
+        private void btnMemberAdd_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                _memberService.Add(new Member
+                {
+                    CategoryId = Convert.ToInt32(cbxCategoryAdd.SelectedValue),
+                    MemberName = tbxMemberNameAdd.Text,
+                    MemberSurname = tbxMemberSurnameAdd.Text,
+                    Balance = Convert.ToDecimal(tbxBalanceAdd.Text),
+                    MemberPhone = tbxMemberPhoneAdd.Text
+                });
+                _logEntryService.LogForAdd(new Worker
+                {
+                    WorkerUserName = cbxCurrentWorker.Text,
+                },
+                new Member
+                {
+                    MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                    MemberName = tbxMemberNameAdd.Text,
+                    MemberSurname = tbxMemberSurnameAdd.Text,
+                    Balance = Convert.ToDecimal(tbxBalanceAdd.Text),
+                });
+                MessageBox.Show("Üye Eklendi.");
+                LoadMembers();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void btnMemberUpdate_Click_1(object sender, EventArgs e)
+        {
+            _memberService.Update(new Member
+            {
+                MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                MemberName = tbxMemberNameUpdate.Text,
+                MemberSurname = tbxMemberSurnameUpdate.Text,
+                CategoryId = Convert.ToInt32(cbxCategoryUpdate.SelectedValue),
+                Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
+                MemberPhone = tbxMemberPhoneUpdate.Text,
+            });
+            _logEntryService.LogForUpdate(new Worker
+            {
+                WorkerUserName = cbxCurrentWorker.Text,
+            },
+            new Member
+            {
+                MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                MemberName = tbxMemberNameUpdate.Text,
+                MemberSurname = tbxMemberSurnameUpdate.Text,
+                Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
+            });
+            MessageBox.Show("Üye Güncellendi.");
+            LoadMembers();
+        }
+
+        private void btnRemove_Click_1(object sender, EventArgs e)
         {
             if (dgvMember.CurrentRow != null)
             {
@@ -135,7 +181,7 @@ namespace AlisPark.WebFormsUI
                     {
                         MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value)
                     });
-                    MessageBox.Show("Üye silindi!");
+                    //MessageBox.Show("Üye silindi!");
                     LoadMembers();
                 }
                 catch (Exception exception)
@@ -144,7 +190,6 @@ namespace AlisPark.WebFormsUI
                 }
 
             }
-
         }
     }
 }
