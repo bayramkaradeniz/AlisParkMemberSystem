@@ -17,7 +17,7 @@ namespace AlisPark.WebFormsUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AlisPark());
+            Application.Run(new LogIn());
         }
     }
 }

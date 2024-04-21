@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AlisPark.Entities.Concrete
 {
-    public  class CategoryMap:EntityTypeConfiguration<Category>
+    public class CategoryMap:EntityTypeConfiguration<Category>
     {
         public CategoryMap()
         {

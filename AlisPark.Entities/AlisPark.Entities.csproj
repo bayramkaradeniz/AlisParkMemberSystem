@@ -58,6 +58,8 @@
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Concrete\Category.cs" />
     <Compile Include="Concrete\CategoryMap.cs" />
+    <Compile Include="Concrete\Company.cs" />
+    <Compile Include="Concrete\CompanyMap.cs" />
     <Compile Include="Concrete\LogEntry.cs" />
     <Compile Include="Concrete\LogEntryMap.cs" />
     <Compile Include="Concrete\Member.cs" />

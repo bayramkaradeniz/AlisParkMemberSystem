@@ -36,6 +36,7 @@
             this.tbxMemberNameSearch = new System.Windows.Forms.TextBox();
             this.lblMemberName = new System.Windows.Forms.Label();
             this.gbxAddMember = new System.Windows.Forms.GroupBox();
+            this.btnMemberAdd = new System.Windows.Forms.Button();
             this.tbxBalanceAdd = new System.Windows.Forms.TextBox();
             this.cbxCategoryAdd = new System.Windows.Forms.ComboBox();
             this.tbxMemberPhoneAdd = new System.Windows.Forms.TextBox();
@@ -47,16 +48,20 @@
             this.lblSurnameAdd = new System.Windows.Forms.Label();
             this.lblMemberNameAdd = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
+            this.btnLoginAdmin = new System.Windows.Forms.Button();
             this.gbxLogLogin = new System.Windows.Forms.GroupBox();
             this.tbxPasswordLogLogin = new System.Windows.Forms.TextBox();
             this.tbxUserNameLogLogin = new System.Windows.Forms.TextBox();
             this.lblPasswordLog = new System.Windows.Forms.Label();
             this.lblUserNameLog = new System.Windows.Forms.Label();
             this.gbxCurrentWorker = new System.Windows.Forms.GroupBox();
-            this.cbxCurrentWorker = new System.Windows.Forms.ComboBox();
+            this.btnChangeCurrentWorker = new System.Windows.Forms.Button();
+            this.tbxCurrentWorkerPassword = new System.Windows.Forms.TextBox();
+            this.lblCurrentWorkerPassword = new System.Windows.Forms.Label();
+            this.tbxCurrentWorker = new System.Windows.Forms.TextBox();
             this.lblCurrentWorker = new System.Windows.Forms.Label();
             this.gbxUpdateMember = new System.Windows.Forms.GroupBox();
+            this.btnMemberUpdate = new System.Windows.Forms.Button();
             this.tbxBalanceUpdate = new System.Windows.Forms.TextBox();
             this.cbxCategoryUpdate = new System.Windows.Forms.ComboBox();
             this.tbxMemberPhoneUpdate = new System.Windows.Forms.TextBox();
@@ -67,8 +72,8 @@
             this.lblMemberPhoneUpdate = new System.Windows.Forms.Label();
             this.lblMemberSurnameUpdate = new System.Windows.Forms.Label();
             this.lblMemberNameUpdate = new System.Windows.Forms.Label();
-            this.btnMemberAdd = new System.Windows.Forms.Button();
-            this.btnMemberUpdate = new System.Windows.Forms.Button();
+            this.tbxDeductAccountFromBalance = new System.Windows.Forms.TextBox();
+            this.btnDeductAccountFromBalance = new System.Windows.Forms.Button();
             this.gbxGetByCategoryName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.gbxSearchByMemberName.SuspendLayout();
@@ -80,6 +85,7 @@
             // 
             // gbxGetByCategoryName
             // 
+            this.gbxGetByCategoryName.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.gbxGetByCategoryName.Controls.Add(this.cbxCategory);
             this.gbxGetByCategoryName.Controls.Add(this.lblCategory);
             this.gbxGetByCategoryName.Location = new System.Drawing.Point(13, 14);
@@ -126,6 +132,7 @@
             // 
             // gbxSearchByMemberName
             // 
+            this.gbxSearchByMemberName.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.gbxSearchByMemberName.Controls.Add(this.tbxMemberNameSearch);
             this.gbxSearchByMemberName.Controls.Add(this.lblMemberName);
             this.gbxSearchByMemberName.Location = new System.Drawing.Point(13, 91);
@@ -169,7 +176,7 @@
             this.gbxAddMember.Controls.Add(this.lblMemberPhoneAdd);
             this.gbxAddMember.Controls.Add(this.lblSurnameAdd);
             this.gbxAddMember.Controls.Add(this.lblMemberNameAdd);
-            this.gbxAddMember.Location = new System.Drawing.Point(13, 356);
+            this.gbxAddMember.Location = new System.Drawing.Point(13, 448);
             this.gbxAddMember.Margin = new System.Windows.Forms.Padding(4);
             this.gbxAddMember.Name = "gbxAddMember";
             this.gbxAddMember.Padding = new System.Windows.Forms.Padding(4);
@@ -177,6 +184,16 @@
             this.gbxAddMember.TabIndex = 3;
             this.gbxAddMember.TabStop = false;
             this.gbxAddMember.Text = "Üye Ekle";
+            // 
+            // btnMemberAdd
+            // 
+            this.btnMemberAdd.Location = new System.Drawing.Point(829, 153);
+            this.btnMemberAdd.Name = "btnMemberAdd";
+            this.btnMemberAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnMemberAdd.TabIndex = 21;
+            this.btnMemberAdd.Text = "Ekle";
+            this.btnMemberAdd.UseVisualStyleBackColor = true;
+            this.btnMemberAdd.Click += new System.EventHandler(this.btnMemberAdd_Click);
             // 
             // tbxBalanceAdd
             // 
@@ -261,35 +278,36 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(984, 128);
+            this.btnRemove.Location = new System.Drawing.Point(984, 101);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(80, 40);
+            this.btnRemove.Size = new System.Drawing.Size(80, 80);
             this.btnRemove.TabIndex = 12;
-            this.btnRemove.Text = "Sil";
+            this.btnRemove.Text = "Üye Sil";
             this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click_1);
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // btnLog
+            // btnLoginAdmin
             // 
-            this.btnLog.Location = new System.Drawing.Point(349, 54);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(117, 40);
-            this.btnLog.TabIndex = 14;
-            this.btnLog.Text = "Kayıtlara Gir";
-            this.btnLog.UseVisualStyleBackColor = true;
-            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            this.btnLoginAdmin.Location = new System.Drawing.Point(349, 30);
+            this.btnLoginAdmin.Name = "btnLoginAdmin";
+            this.btnLoginAdmin.Size = new System.Drawing.Size(117, 40);
+            this.btnLoginAdmin.TabIndex = 14;
+            this.btnLoginAdmin.Text = "Admin Sayfası";
+            this.btnLoginAdmin.UseVisualStyleBackColor = true;
+            this.btnLoginAdmin.Click += new System.EventHandler(this.btnLoginAdmin_Click);
             // 
             // gbxLogLogin
             // 
+            this.gbxLogLogin.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.gbxLogLogin.Controls.Add(this.tbxPasswordLogLogin);
             this.gbxLogLogin.Controls.Add(this.tbxUserNameLogLogin);
             this.gbxLogLogin.Controls.Add(this.lblPasswordLog);
             this.gbxLogLogin.Controls.Add(this.lblUserNameLog);
-            this.gbxLogLogin.Controls.Add(this.btnLog);
-            this.gbxLogLogin.Location = new System.Drawing.Point(608, 14);
+            this.gbxLogLogin.Controls.Add(this.btnLoginAdmin);
+            this.gbxLogLogin.Location = new System.Drawing.Point(565, 14);
             this.gbxLogLogin.Name = "gbxLogLogin";
-            this.gbxLogLogin.Size = new System.Drawing.Size(472, 100);
+            this.gbxLogLogin.Size = new System.Drawing.Size(472, 83);
             this.gbxLogLogin.TabIndex = 15;
             this.gbxLogLogin.TabStop = false;
             // 
@@ -328,21 +346,50 @@
             // 
             // gbxCurrentWorker
             // 
-            this.gbxCurrentWorker.Controls.Add(this.cbxCurrentWorker);
+            this.gbxCurrentWorker.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.gbxCurrentWorker.Controls.Add(this.btnChangeCurrentWorker);
+            this.gbxCurrentWorker.Controls.Add(this.tbxCurrentWorkerPassword);
+            this.gbxCurrentWorker.Controls.Add(this.lblCurrentWorkerPassword);
+            this.gbxCurrentWorker.Controls.Add(this.tbxCurrentWorker);
             this.gbxCurrentWorker.Controls.Add(this.lblCurrentWorker);
-            this.gbxCurrentWorker.Location = new System.Drawing.Point(608, 120);
+            this.gbxCurrentWorker.Location = new System.Drawing.Point(565, 103);
             this.gbxCurrentWorker.Name = "gbxCurrentWorker";
-            this.gbxCurrentWorker.Size = new System.Drawing.Size(357, 53);
+            this.gbxCurrentWorker.Size = new System.Drawing.Size(412, 78);
             this.gbxCurrentWorker.TabIndex = 16;
             this.gbxCurrentWorker.TabStop = false;
             // 
-            // cbxCurrentWorker
+            // btnChangeCurrentWorker
             // 
-            this.cbxCurrentWorker.FormattingEnabled = true;
-            this.cbxCurrentWorker.Location = new System.Drawing.Point(82, 19);
-            this.cbxCurrentWorker.Name = "cbxCurrentWorker";
-            this.cbxCurrentWorker.Size = new System.Drawing.Size(247, 24);
-            this.cbxCurrentWorker.TabIndex = 1;
+            this.btnChangeCurrentWorker.Location = new System.Drawing.Point(315, 22);
+            this.btnChangeCurrentWorker.Name = "btnChangeCurrentWorker";
+            this.btnChangeCurrentWorker.Size = new System.Drawing.Size(75, 43);
+            this.btnChangeCurrentWorker.TabIndex = 4;
+            this.btnChangeCurrentWorker.Text = "Yetkili Değiştir";
+            this.btnChangeCurrentWorker.UseVisualStyleBackColor = true;
+            this.btnChangeCurrentWorker.Click += new System.EventHandler(this.btnChangeCurrentWorker_Click);
+            // 
+            // tbxCurrentWorkerPassword
+            // 
+            this.tbxCurrentWorkerPassword.Location = new System.Drawing.Point(83, 46);
+            this.tbxCurrentWorkerPassword.Name = "tbxCurrentWorkerPassword";
+            this.tbxCurrentWorkerPassword.Size = new System.Drawing.Size(208, 22);
+            this.tbxCurrentWorkerPassword.TabIndex = 3;
+            // 
+            // lblCurrentWorkerPassword
+            // 
+            this.lblCurrentWorkerPassword.AutoSize = true;
+            this.lblCurrentWorkerPassword.Location = new System.Drawing.Point(7, 49);
+            this.lblCurrentWorkerPassword.Name = "lblCurrentWorkerPassword";
+            this.lblCurrentWorkerPassword.Size = new System.Drawing.Size(53, 16);
+            this.lblCurrentWorkerPassword.TabIndex = 2;
+            this.lblCurrentWorkerPassword.Text = "Parola :";
+            // 
+            // tbxCurrentWorker
+            // 
+            this.tbxCurrentWorker.Location = new System.Drawing.Point(83, 16);
+            this.tbxCurrentWorker.Name = "tbxCurrentWorker";
+            this.tbxCurrentWorker.Size = new System.Drawing.Size(208, 22);
+            this.tbxCurrentWorker.TabIndex = 1;
             // 
             // lblCurrentWorker
             // 
@@ -366,7 +413,7 @@
             this.gbxUpdateMember.Controls.Add(this.lblMemberPhoneUpdate);
             this.gbxUpdateMember.Controls.Add(this.lblMemberSurnameUpdate);
             this.gbxUpdateMember.Controls.Add(this.lblMemberNameUpdate);
-            this.gbxUpdateMember.Location = new System.Drawing.Point(13, 593);
+            this.gbxUpdateMember.Location = new System.Drawing.Point(13, 680);
             this.gbxUpdateMember.Margin = new System.Windows.Forms.Padding(4);
             this.gbxUpdateMember.Name = "gbxUpdateMember";
             this.gbxUpdateMember.Padding = new System.Windows.Forms.Padding(4);
@@ -374,6 +421,16 @@
             this.gbxUpdateMember.TabIndex = 21;
             this.gbxUpdateMember.TabStop = false;
             this.gbxUpdateMember.Text = "Üye Güncelle";
+            // 
+            // btnMemberUpdate
+            // 
+            this.btnMemberUpdate.Location = new System.Drawing.Point(829, 153);
+            this.btnMemberUpdate.Name = "btnMemberUpdate";
+            this.btnMemberUpdate.Size = new System.Drawing.Size(85, 23);
+            this.btnMemberUpdate.TabIndex = 21;
+            this.btnMemberUpdate.Text = "Güncelle";
+            this.btnMemberUpdate.UseVisualStyleBackColor = true;
+            this.btnMemberUpdate.Click += new System.EventHandler(this.btnMemberUpdate_Click);
             // 
             // tbxBalanceUpdate
             // 
@@ -456,32 +513,34 @@
             this.lblMemberNameUpdate.TabIndex = 11;
             this.lblMemberNameUpdate.Text = "Üye Adı :";
             // 
-            // btnMemberAdd
+            // tbxDeductAccountFromBalance
             // 
-            this.btnMemberAdd.Location = new System.Drawing.Point(829, 153);
-            this.btnMemberAdd.Name = "btnMemberAdd";
-            this.btnMemberAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnMemberAdd.TabIndex = 21;
-            this.btnMemberAdd.Text = "Ekle";
-            this.btnMemberAdd.UseVisualStyleBackColor = true;
-            this.btnMemberAdd.Click += new System.EventHandler(this.btnMemberAdd_Click_1);
+            this.tbxDeductAccountFromBalance.Location = new System.Drawing.Point(14, 386);
+            this.tbxDeductAccountFromBalance.Multiline = true;
+            this.tbxDeductAccountFromBalance.Name = "tbxDeductAccountFromBalance";
+            this.tbxDeductAccountFromBalance.Size = new System.Drawing.Size(568, 40);
+            this.tbxDeductAccountFromBalance.TabIndex = 23;
             // 
-            // btnMemberUpdate
+            // btnDeductAccountFromBalance
             // 
-            this.btnMemberUpdate.Location = new System.Drawing.Point(839, 152);
-            this.btnMemberUpdate.Name = "btnMemberUpdate";
-            this.btnMemberUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnMemberUpdate.TabIndex = 21;
-            this.btnMemberUpdate.Text = "Güncelle";
-            this.btnMemberUpdate.UseVisualStyleBackColor = true;
-            this.btnMemberUpdate.Click += new System.EventHandler(this.btnMemberUpdate_Click_1);
+            this.btnDeductAccountFromBalance.Location = new System.Drawing.Point(589, 386);
+            this.btnDeductAccountFromBalance.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeductAccountFromBalance.Name = "btnDeductAccountFromBalance";
+            this.btnDeductAccountFromBalance.Size = new System.Drawing.Size(491, 40);
+            this.btnDeductAccountFromBalance.TabIndex = 22;
+            this.btnDeductAccountFromBalance.Text = "Hesabı Bakiyeden Düşür";
+            this.btnDeductAccountFromBalance.UseVisualStyleBackColor = true;
+            this.btnDeductAccountFromBalance.Click += new System.EventHandler(this.btnDeductAccountFromBalance_Click);
             // 
             // AlisPark
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1451, 1047);
+            this.Controls.Add(this.tbxDeductAccountFromBalance);
+            this.Controls.Add(this.btnDeductAccountFromBalance);
             this.Controls.Add(this.gbxUpdateMember);
             this.Controls.Add(this.gbxCurrentWorker);
             this.Controls.Add(this.gbxLogLogin);
@@ -508,6 +567,7 @@
             this.gbxUpdateMember.ResumeLayout(false);
             this.gbxUpdateMember.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -522,14 +582,13 @@
         private System.Windows.Forms.Label lblMemberName;
         private System.Windows.Forms.GroupBox gbxAddMember;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.Button btnLoginAdmin;
         private System.Windows.Forms.GroupBox gbxLogLogin;
         private System.Windows.Forms.TextBox tbxPasswordLogLogin;
         private System.Windows.Forms.TextBox tbxUserNameLogLogin;
         private System.Windows.Forms.Label lblPasswordLog;
         private System.Windows.Forms.Label lblUserNameLog;
         private System.Windows.Forms.GroupBox gbxCurrentWorker;
-        private System.Windows.Forms.ComboBox cbxCurrentWorker;
         private System.Windows.Forms.Label lblCurrentWorker;
         private System.Windows.Forms.TextBox tbxMemberNameAdd;
         private System.Windows.Forms.Label lblBalanceAdd;
@@ -554,5 +613,11 @@
         private System.Windows.Forms.Label lblMemberNameUpdate;
         private System.Windows.Forms.Button btnMemberAdd;
         private System.Windows.Forms.Button btnMemberUpdate;
+        private System.Windows.Forms.TextBox tbxCurrentWorker;
+        private System.Windows.Forms.TextBox tbxCurrentWorkerPassword;
+        private System.Windows.Forms.Label lblCurrentWorkerPassword;
+        private System.Windows.Forms.Button btnChangeCurrentWorker;
+        private System.Windows.Forms.TextBox tbxDeductAccountFromBalance;
+        private System.Windows.Forms.Button btnDeductAccountFromBalance;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using AlisPark.Business.Abstract;
+using AlisPark.Business.Utilities;
+using AlisPark.Business.ValidationRules.FluentValidation;
 using AlisPark.DataAccess.Abstract;
 using AlisPark.DataAccess.Concrete;
 using AlisPark.Entities.Concrete;
@@ -11,33 +13,26 @@ using Twilio.TwiML.Voice;
 
 namespace AlisPark.Business.Concrete
 {
-    public class WorkerManager : IWorkerService
+    public class CompanyManager : ICompanyService
     {
+        private ICompanyDal _companyDal;
         private IWorkerDal _workerDal;
 
-        public WorkerManager(IWorkerDal workerDal)
+        public CompanyManager(ICompanyDal companyDal,IWorkerDal workerDal)
         {
+            _companyDal = companyDal;
             _workerDal = workerDal;
         }
 
-        public void Add(Worker worker)
+
+        public void AddWorker(Worker worker)
         {
             _workerDal.Add(worker);
         }
 
-        public void Delete(Worker worker)
+        public void Update(Company company)
         {
-            _workerDal.Delete(worker);
-        }
-
-        public List<Worker> GetAll()
-        {
-            return _workerDal.GetAll();
-        }
-
-        public void Update(Worker worker)
-        {
-            _workerDal.Update(worker);
+            _companyDal.Update(company);
         }
     }
 }

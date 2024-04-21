@@ -1,0 +1,305 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AlisPark.WebFormsUI
+{
+    public partial class MasaPanel : Form
+    {
+
+        private Panel buttonPanel = new Panel();
+        DataGridView dataGridView1 = new System.Windows.Forms.DataGridView();
+
+        private Button addNewRowButton = new Button();
+        private Button deleteRowButton = new Button();
+
+
+        public MasaPanel()
+        {
+            InitializeComponent();
+            InitDGV();
+            SetupLayout();
+            PopulateDataGridView();
+        }
+
+        private void InitDGV()
+        {
+            this.Controls.Add(dataGridView1);
+            Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 67);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(445, 207);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tarih";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Adet";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Ürün";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Toplam";
+            this.Column4.Name = "Column4";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+             
+        }
+
+
+        private void addNewRowButton_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.Rows.Add();
+        }
+
+        private void deleteRowButton_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0 &&
+                this.dataGridView1.SelectedRows[0].Index !=
+                this.dataGridView1.Rows.Count - 1)
+            {
+                this.dataGridView1.Rows.RemoveAt(
+                    this.dataGridView1.SelectedRows[0].Index);
+            }
+        }
+
+        private void SetupLayout()
+        {
+            this.Size = new Size(600, 500);
+
+            // 
+            // deleteRowButton
+            // 
+            this.deleteRowButton.BackColor = System.Drawing.Color.Red;
+            this.deleteRowButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteRowButton.Font = new System.Drawing.Font("Nirmala UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteRowButton.ForeColor = System.Drawing.Color.White;
+            this.deleteRowButton.Location = new System.Drawing.Point(20, 584);
+            this.deleteRowButton.Name = "deleteRowButton";
+            this.deleteRowButton.Size = new System.Drawing.Size(211, 59);
+            this.deleteRowButton.TabIndex = 4;
+            this.deleteRowButton.Text = "Ürün Ekle";
+            this.deleteRowButton.UseVisualStyleBackColor = false;
+            deleteRowButton.Click += new EventHandler(addNewRowButton_Click);
+
+            // 
+            // addNewRowButton
+            // 
+            this.addNewRowButton.BackColor = System.Drawing.Color.Red;
+            this.addNewRowButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addNewRowButton.Font = new System.Drawing.Font("Nirmala UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewRowButton.ForeColor = System.Drawing.Color.White;
+            this.addNewRowButton.Location = new System.Drawing.Point(246, 584);
+            this.addNewRowButton.Name = "addNewRowButton";
+            this.addNewRowButton.Size = new System.Drawing.Size(211, 59);
+            this.addNewRowButton.TabIndex = 5;
+            this.addNewRowButton.Text = "Ürün Sil";
+            this.addNewRowButton.UseVisualStyleBackColor = false;
+            deleteRowButton.Click += new EventHandler(deleteRowButton_Click);
+
+            buttonPanel.Controls.Add(addNewRowButton);
+            buttonPanel.Controls.Add(deleteRowButton);
+            buttonPanel.Height = 50;
+            buttonPanel.Dock = DockStyle.Bottom;
+            this.Controls.Add(this.buttonPanel);
+        }
+
+        private void SetupDataGridView()
+        {
+            dataGridView1.ColumnCount = 3;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font =
+                new Font(dataGridView1.Font, FontStyle.Bold);
+
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Location = new Point(8, 8);
+            dataGridView1.Size = new Size(500, 250);
+            dataGridView1.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridView1.ColumnHeadersBorderStyle =
+                DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dataGridView1.GridColor = Color.Black;
+            dataGridView1.RowHeadersVisible = false;
+
+
+            dataGridView1.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Dock = DockStyle.Fill;
+
+            //songsDataGridView.CellFormatting += new
+            //    DataGridViewCellFormattingEventHandler(
+            //    songsDataGridView_CellFormatting);
+        }
+
+        private void PopulateDataGridView()
+        {
+
+            string[] row0 = { "11/22/1968", "29", "Türk kahvesi",
+             "The Beatles [White Album]" };
+            string[] row1 = { "11/22/1968", "5", "Fanta",
+             "AAA" };
+
+
+            dataGridView1.Rows.Add(row0);
+            dataGridView1.Rows.Add(row1);
+
+            dataGridView1.Columns[0].DisplayIndex = 0;
+            dataGridView1.Columns[1].DisplayIndex = 1;
+            dataGridView1.Columns[2].DisplayIndex = 2;
+        }
+
+
+        bool virgulClicked = false;
+        int digit = 0;
+        int leftDigit = 0, rightDigit = 0;
+
+        private void AddDigit(int number)
+        {
+            if (!virgulClicked)
+                fiyat1.Text = number.ToString() + fiyat1.Text;
+            else
+                fiyat1.Text = fiyat1.Text + number.ToString();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {            
+            AddDigit(1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddDigit(2);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AddDigit(3);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AddDigit(4);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddDigit(5);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AddDigit(6);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AddDigit(7);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AddDigit(8);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AddDigit(9);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            AddDigit(0);
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e) // virgül
+        {
+            if (virgulClicked)
+                virgulClicked = false;
+            else
+                virgulClicked = true;
+
+            if(fiyat1.Text == null)
+            {
+                fiyat1.Text = ",";
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e) // silme tuşu
+        {
+            string[] sep = fiyat1.Text.Split(',');
+            if(virgulClicked == true)
+            {
+                if (sep[1].Length == 0)
+                {
+                    virgulClicked = false;
+                    RemoveOneDigit(sep[0]);
+                }
+                else
+                    sep[1] = RemoveOneDigit(sep[1]); 
+            }
+            else
+            {
+                if (sep[0].Length == 0)
+                {
+                    virgulClicked = true;
+                    RemoveOneDigit(sep[1]);
+                }
+                else
+                    sep[0] = RemoveOneDigit(sep[0]);
+            }
+
+            string newNum = sep[0] + "," + sep[1];
+            fiyat1.Text = newNum;
+        }
+
+        private string RemoveOneDigit(string num)
+        {
+            string truncatedStr = "";
+            if (virgulClicked)
+                truncatedStr = num.Substring(1); // TRY CATCH KOYULACAK
+            else
+                truncatedStr = num.Remove(num.Length - 1); // TRY CATCH KOYULACAK
+            return truncatedStr;
+        }
+    }
+}

@@ -9,8 +9,11 @@ namespace AlisPark.Business.Abstract
 {
     public interface ILogEntryService
     {
+
         List<LogEntry> GetAll();
-        List<LogEntry> GetLogsByMemberName(string memberName);
+        List<LogEntry> GetLogsByWord(string word);
+        void LogForLogIn(Worker worker);
+        void LogForChange(string worker);
         void LogForAdd(Worker worker,Member member);
         void LogForUpdate(Worker worker, Member member);
         void Delete(LogEntry logEntry);

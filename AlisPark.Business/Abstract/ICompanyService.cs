@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace AlisPark.Business.Abstract
 {
-    public interface IWorkerService
+    public interface ICompanyService
     {
-        List<Worker> GetAll();
-        void Add(Worker worker);
-        void Update(Worker worker);
-        void Delete(Worker worker);
+        void AddWorker(Worker worker);
+        void Update(Company company);
     }
 }

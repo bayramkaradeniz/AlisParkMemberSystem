@@ -24,7 +24,7 @@ namespace AlisPark.Business.Concrete
         public List<Member> GetAll()
         {
             //Business code            
-            return _memberDal.GetAll();
+            return _memberDal.GetAll(); 
         }
 
         public List<Member> GetProductsByCategory(int categoryId)
