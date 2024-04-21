@@ -31,11 +31,6 @@ namespace AlisPark.Business.Concrete
                 _logEntryDal.Add(logEntry);
             }
         }
-        public List<LogEntry> GetLogsByMemberName(string memberName)
-        {
-            return _logEntryDal.GetAll(p => p.Description.Contains(memberName.ToLower()));
-        }
-
 
         public List<LogEntry> GetAll()
         {
