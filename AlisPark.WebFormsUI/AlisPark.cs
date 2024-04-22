@@ -28,7 +28,6 @@ namespace AlisPark.WebFormsUI
             _categoryService = InstanceFactory.GetInstance<ICategoryService>();
             _logEntryService = InstanceFactory.GetInstance<ILogEntryService>();
             _workerService = InstanceFactory.GetInstance<IWorkerService>();
-            _messageSenderService = new MessageSenderManager();
             _companyService = InstanceFactory.GetInstance<ICompanyService>();
 
         }

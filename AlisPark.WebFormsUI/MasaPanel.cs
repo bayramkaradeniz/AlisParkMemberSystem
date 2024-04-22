@@ -28,6 +28,11 @@ namespace AlisPark.WebFormsUI
             PopulateDataGridView();
         }
 
+        private void PopulateDgv()
+        {
+          //  _tableEventsService.LoadAll();
+        }
+
         private void InitDGV()
         {
             this.Controls.Add(dataGridView1);
@@ -186,8 +191,6 @@ namespace AlisPark.WebFormsUI
 
 
         bool virgulClicked = false;
-        int digit = 0;
-        int leftDigit = 0, rightDigit = 0;
 
         private void AddDigit(int number)
         {

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvLogs = new System.Windows.Forms.DataGridView();
             this.gbxSearchByMemberName = new System.Windows.Forms.GroupBox();
             this.tbxMemberNameSearchLog = new System.Windows.Forms.TextBox();
@@ -66,14 +66,15 @@
             this.dgvLogs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLogs.Location = new System.Drawing.Point(10, 82);
-            this.dgvLogs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLogs.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLogs.Name = "dgvLogs";
             this.dgvLogs.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLogs.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLogs.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLogs.RowTemplate.Height = 24;
             this.dgvLogs.Size = new System.Drawing.Size(791, 149);
             this.dgvLogs.TabIndex = 0;
+            this.dgvLogs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogs_CellContentClick);
             // 
             // gbxSearchByMemberName
             // 
@@ -81,7 +82,7 @@
             this.gbxSearchByMemberName.Controls.Add(this.lblMemberName);
             this.gbxSearchByMemberName.Location = new System.Drawing.Point(10, 11);
             this.gbxSearchByMemberName.Name = "gbxSearchByMemberName";
-            this.gbxSearchByMemberName.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.gbxSearchByMemberName.Padding = new System.Windows.Forms.Padding(10);
             this.gbxSearchByMemberName.Size = new System.Drawing.Size(400, 60);
             this.gbxSearchByMemberName.TabIndex = 3;
             this.gbxSearchByMemberName.TabStop = false;
@@ -107,7 +108,7 @@
             // btnRemoveLogs
             // 
             this.btnRemoveLogs.Location = new System.Drawing.Point(661, 10);
-            this.btnRemoveLogs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRemoveLogs.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveLogs.Name = "btnRemoveLogs";
             this.btnRemoveLogs.Size = new System.Drawing.Size(131, 23);
             this.btnRemoveLogs.TabIndex = 4;
@@ -134,7 +135,7 @@
             // btnWorkerAdd
             // 
             this.btnWorkerAdd.Location = new System.Drawing.Point(639, 77);
-            this.btnWorkerAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnWorkerAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnWorkerAdd.Name = "btnWorkerAdd";
             this.btnWorkerAdd.Size = new System.Drawing.Size(56, 19);
             this.btnWorkerAdd.TabIndex = 21;
@@ -145,7 +146,7 @@
             // tbxWorkerPhoneAdd
             // 
             this.tbxWorkerPhoneAdd.Location = new System.Drawing.Point(134, 78);
-            this.tbxWorkerPhoneAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxWorkerPhoneAdd.Margin = new System.Windows.Forms.Padding(2);
             this.tbxWorkerPhoneAdd.Name = "tbxWorkerPhoneAdd";
             this.tbxWorkerPhoneAdd.Size = new System.Drawing.Size(186, 20);
             this.tbxWorkerPhoneAdd.TabIndex = 18;
@@ -153,7 +154,7 @@
             // tbxWorkerPasswordAdd
             // 
             this.tbxWorkerPasswordAdd.Location = new System.Drawing.Point(510, 30);
-            this.tbxWorkerPasswordAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxWorkerPasswordAdd.Margin = new System.Windows.Forms.Padding(2);
             this.tbxWorkerPasswordAdd.Name = "tbxWorkerPasswordAdd";
             this.tbxWorkerPasswordAdd.Size = new System.Drawing.Size(186, 20);
             this.tbxWorkerPasswordAdd.TabIndex = 17;
@@ -161,7 +162,7 @@
             // tbxWorkerUserNameAdd
             // 
             this.tbxWorkerUserNameAdd.Location = new System.Drawing.Point(134, 30);
-            this.tbxWorkerUserNameAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxWorkerUserNameAdd.Margin = new System.Windows.Forms.Padding(2);
             this.tbxWorkerUserNameAdd.Name = "tbxWorkerUserNameAdd";
             this.tbxWorkerUserNameAdd.Size = new System.Drawing.Size(186, 20);
             this.tbxWorkerUserNameAdd.TabIndex = 16;
@@ -202,11 +203,11 @@
             this.dgvWorkers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvWorkers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWorkers.Location = new System.Drawing.Point(10, 236);
-            this.dgvWorkers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvWorkers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvWorkers.Name = "dgvWorkers";
             this.dgvWorkers.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWorkers.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkers.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvWorkers.RowTemplate.Height = 24;
             this.dgvWorkers.Size = new System.Drawing.Size(791, 149);
             this.dgvWorkers.TabIndex = 6;
@@ -231,7 +232,7 @@
             // btnWorkerUpdate
             // 
             this.btnWorkerUpdate.Location = new System.Drawing.Point(627, 79);
-            this.btnWorkerUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnWorkerUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnWorkerUpdate.Name = "btnWorkerUpdate";
             this.btnWorkerUpdate.Size = new System.Drawing.Size(68, 19);
             this.btnWorkerUpdate.TabIndex = 21;
@@ -242,7 +243,7 @@
             // tbxWorkerPhoneUpdate
             // 
             this.tbxWorkerPhoneUpdate.Location = new System.Drawing.Point(134, 78);
-            this.tbxWorkerPhoneUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxWorkerPhoneUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.tbxWorkerPhoneUpdate.Name = "tbxWorkerPhoneUpdate";
             this.tbxWorkerPhoneUpdate.Size = new System.Drawing.Size(186, 20);
             this.tbxWorkerPhoneUpdate.TabIndex = 18;
@@ -250,7 +251,7 @@
             // tbxWorkerPasswordUpdate
             // 
             this.tbxWorkerPasswordUpdate.Location = new System.Drawing.Point(510, 30);
-            this.tbxWorkerPasswordUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxWorkerPasswordUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.tbxWorkerPasswordUpdate.Name = "tbxWorkerPasswordUpdate";
             this.tbxWorkerPasswordUpdate.Size = new System.Drawing.Size(186, 20);
             this.tbxWorkerPasswordUpdate.TabIndex = 17;
@@ -258,7 +259,7 @@
             // tbxWorkerUserNameUpdate
             // 
             this.tbxWorkerUserNameUpdate.Location = new System.Drawing.Point(134, 30);
-            this.tbxWorkerUserNameUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxWorkerUserNameUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.tbxWorkerUserNameUpdate.Name = "tbxWorkerUserNameUpdate";
             this.tbxWorkerUserNameUpdate.Size = new System.Drawing.Size(186, 20);
             this.tbxWorkerUserNameUpdate.TabIndex = 16;
@@ -296,7 +297,7 @@
             // btnWorkerDelete
             // 
             this.btnWorkerDelete.Location = new System.Drawing.Point(661, 41);
-            this.btnWorkerDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnWorkerDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnWorkerDelete.Name = "btnWorkerDelete";
             this.btnWorkerDelete.Size = new System.Drawing.Size(131, 24);
             this.btnWorkerDelete.TabIndex = 23;
@@ -316,7 +317,7 @@
             this.Controls.Add(this.btnRemoveLogs);
             this.Controls.Add(this.gbxSearchByMemberName);
             this.Controls.Add(this.dgvLogs);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminPage";
             this.Text = "Kayıt İşlemleri";
             this.Load += new System.EventHandler(this.Logs_Load);

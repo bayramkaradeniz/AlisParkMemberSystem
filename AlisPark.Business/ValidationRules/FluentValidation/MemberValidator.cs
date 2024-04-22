@@ -16,9 +16,9 @@ namespace AlisPark.Business.ValidationRules.FluentValidation
             RuleFor(p => p.MemberName).NotEmpty().WithMessage("Üye  ismi boş olamaz");
             RuleFor(p => p.CategoryId).NotEmpty();
             RuleFor(p => p.Balance).NotEmpty();
-            RuleFor(p => p.MemberPhone).NotEmpty();
+         //   RuleFor(p => p.MemberPhone).NotEmpty();
             RuleFor(p => p.MemberSurname).NotEmpty();
-            RuleFor(p => p.Balance).GreaterThanOrEqualTo(100);
+         //   RuleFor(p => p.Balance).GreaterThanOrEqualTo(100);
         }
     }
 }

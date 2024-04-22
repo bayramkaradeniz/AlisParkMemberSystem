@@ -20,7 +20,8 @@ namespace AlisPark.DataAccess.Concrete
         public DbSet<LogEntry> LogEntries { get; set; }
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Company> CompanyUsers { get; set; }
-        
+        public DbSet<Table> Tables { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

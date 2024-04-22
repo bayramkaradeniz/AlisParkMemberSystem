@@ -138,5 +138,10 @@ namespace AlisPark.WebFormsUI
                 }
             }
         }
+
+        private void dgvLogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

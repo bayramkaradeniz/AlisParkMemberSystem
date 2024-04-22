@@ -112,6 +112,7 @@
     <Compile Include="Abstract\ICompanyService.cs" />
     <Compile Include="Abstract\ILogEntryService.cs" />
     <Compile Include="Abstract\IMemberService.cs" />
+    <Compile Include="Abstract\ITableService.cs" />
     <Compile Include="Abstract\IWorkerService.cs" />
     <Compile Include="Abstract\IMessageSenderService.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Concrete\LogEntryManager.cs" />
     <Compile Include="Concrete\MemberManager.cs" />
     <Compile Include="Concrete\MessageSenderManager.cs" />
+    <Compile Include="Concrete\TableManager.cs" />
     <Compile Include="Concrete\WorkerManager.cs" />
     <Compile Include="DependencyRevolvers\Ninject\BusinessModule.cs" />
     <Compile Include="DependencyRevolvers\Ninject\InstanceFactory.cs" />

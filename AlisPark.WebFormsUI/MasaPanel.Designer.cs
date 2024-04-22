@@ -45,11 +45,11 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.fiyat1 = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -286,6 +286,19 @@
             this.panel2.Size = new System.Drawing.Size(371, 434);
             this.panel2.TabIndex = 2;
             // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Nirmala UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(13, 110);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(343, 66);
+            this.button13.TabIndex = 1;
+            this.button13.Text = "Hesabı Kapat";
+            this.button13.UseVisualStyleBackColor = false;
+            // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Nirmala UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -321,25 +334,12 @@
             this.fiyat1.Font = new System.Drawing.Font("Nirmala UI", 69F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fiyat1.ForeColor = System.Drawing.Color.White;
             this.fiyat1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.fiyat1.Location = new System.Drawing.Point(335, 3);
+            this.fiyat1.Location = new System.Drawing.Point(366, 3);
             this.fiyat1.Name = "fiyat1";
-            this.fiyat1.Size = new System.Drawing.Size(396, 130);
+            this.fiyat1.Size = new System.Drawing.Size(365, 130);
             this.fiyat1.TabIndex = 0;
             this.fiyat1.Text = "26,00";
             this.fiyat1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Nirmala UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(13, 110);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(343, 66);
-            this.button13.TabIndex = 1;
-            this.button13.Text = "Hesabı Kapat";
-            this.button13.UseVisualStyleBackColor = false;
             // 
             // MasaPanel
             // 

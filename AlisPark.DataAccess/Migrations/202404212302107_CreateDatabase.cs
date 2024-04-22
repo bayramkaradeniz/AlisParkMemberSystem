@@ -55,12 +55,37 @@
                 .PrimaryKey(t => t.MemberId);
             
             CreateTable(
+                "dbo.Tables",
+                c => new
+                    {
+                        TableId = c.Int(nullable: false, identity: true),
+                        Balance = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.TableId);
+            
+            CreateTable(
+                "dbo.TableEvents",
+                c => new
+                    {
+                        TableEventId = c.Int(nullable: false, identity: true),
+                        Date = c.DateTime(nullable: false),
+                        Adet = c.Int(nullable: false),
+                        Isim = c.String(),
+                        Aciklama = c.String(),
+                        Table_TableId = c.Int(),
+                    })
+                .PrimaryKey(t => t.TableEventId)
+                .ForeignKey("dbo.Tables", t => t.Table_TableId)
+                .Index(t => t.Table_TableId);
+            
+            CreateTable(
                 "dbo.Workers",
                 c => new
                     {
                         WorkerId = c.Int(nullable: false, identity: true),
                         WorkerUserName = c.String(maxLength: 50, unicode: false),
-                        Password = c.String(),
+                        WorkerPassword = c.String(),
+                        WorkerPhone = c.String(),
                     })
                 .PrimaryKey(t => t.WorkerId);
             
@@ -68,7 +93,11 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.TableEvents", "Table_TableId", "dbo.Tables");
+            DropIndex("dbo.TableEvents", new[] { "Table_TableId" });
             DropTable("dbo.Workers");
+            DropTable("dbo.TableEvents");
+            DropTable("dbo.Tables");
             DropTable("dbo.Member");
             DropTable("dbo.LogEntries");
             DropTable("dbo.CompanyUsers");
