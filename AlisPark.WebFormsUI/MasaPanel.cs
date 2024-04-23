@@ -304,5 +304,11 @@ namespace AlisPark.WebFormsUI
                 truncatedStr = num.Remove(num.Length - 1); // TRY CATCH KOYULACAK
             return truncatedStr;
         }
+
+        private void button14_Click(object sender, EventArgs e) // Order Panel Button
+        {
+            OrderWindow orderPanel = new OrderWindow();
+            orderPanel.Show();
+        }
     }
 }

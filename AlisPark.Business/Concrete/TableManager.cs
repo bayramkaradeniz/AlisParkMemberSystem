@@ -49,11 +49,6 @@ namespace AlisPark.Business.Concrete
             return _tableDal.GetAll();
         }
 
-        //public List<Table> GetProductsByCategory(int categoryId)
-        //{
-        //    return _tableDal.GetAll(p => p.CategoryId == categoryId);
-        //}
-
         public List<Table> GetTableByTableId(int tableId)
         {
             return _tableDal.GetAll(p => p.TableId == tableId);
@@ -82,7 +77,7 @@ namespace AlisPark.Business.Concrete
                 throw new Exception("Silme gerçekleşemedi");
             }
 
-        }
+        }   
 
         public void AddNewTable()
         {

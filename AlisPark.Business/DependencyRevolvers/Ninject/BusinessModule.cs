@@ -32,6 +32,13 @@ namespace AlisPark.Business.DependencyRevolvers.Ninject
 
             Bind<ITableService>().To<TableManager>().InSingletonScope();
             Bind<ITableDal>().To<EfTableDal>().InSingletonScope();
+
+            Bind<IProductService>().To<ProductManager>().InSingletonScope();
+            Bind<IProductDal>().To<EfProductDal>().InSingletonScope();
+
+            Bind<IOrderService>().To<OrderManager>().InSingletonScope();
+            Bind<IOrderDal>().To<EfOrderDal>().InSingletonScope();
+
         }
     }
 }

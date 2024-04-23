@@ -59,8 +59,10 @@
     <Compile Include="Abstract\IEntityRepository.cs" />
     <Compile Include="Abstract\ILogEntryDal.cs" />
     <Compile Include="Abstract\IMemberDal.cs" />
+    <Compile Include="Abstract\IOrderDal.cs" />
     <Compile Include="Abstract\ITableDal.cs" />
     <Compile Include="Abstract\ITableEventDal.cs" />
+    <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IWorkerDal.cs" />
     <Compile Include="Concrete\AlisParkContext.cs" />
     <Compile Include="Concrete\EfCategoryDal.cs" />
@@ -68,8 +70,10 @@
     <Compile Include="Concrete\EfEntityRepositoryBase.cs" />
     <Compile Include="Concrete\EfLogEntryDal.cs" />
     <Compile Include="Concrete\EfMemberDal.cs" />
+    <Compile Include="Concrete\EfOrderDal.cs" />
     <Compile Include="Concrete\EfTableEventDal.cs" />
     <Compile Include="Concrete\EfTableDal.cs" />
+    <Compile Include="Concrete\EfProductDal.cs" />
     <Compile Include="Concrete\EfWorkerDal.cs" />
     <Compile Include="Migrations\202404212302107_CreateDatabase.cs" />
     <Compile Include="Migrations\202404212302107_CreateDatabase.Designer.cs">

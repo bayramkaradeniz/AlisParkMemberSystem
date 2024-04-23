@@ -58,6 +58,8 @@
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Concrete\Category.cs" />
     <Compile Include="Concrete\CategoryMap.cs" />
+    <Compile Include="Concrete\Order.cs" />
+    <Compile Include="Concrete\Product.cs" />
     <Compile Include="Concrete\TableEvent.cs" />
     <Compile Include="Concrete\Table.cs" />
     <Compile Include="Concrete\Company.cs" />
