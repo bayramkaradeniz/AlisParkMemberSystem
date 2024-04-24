@@ -33,6 +33,7 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.productName = new System.Windows.Forms.Label();
             this.frequentlyUsed = new System.Windows.Forms.FlowLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvProductList = new System.Windows.Forms.DataGridView();
@@ -43,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SıkKullanılanlar = new System.Windows.Forms.Label();
             this.ürünler = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.frequentlyUsed.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
@@ -71,6 +71,7 @@
             this.searchBox.Size = new System.Drawing.Size(276, 35);
             this.searchBox.TabIndex = 1;
             this.searchBox.Text = "Ürün Arayın...";
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // productName
             // 
@@ -86,6 +87,15 @@
             this.frequentlyUsed.Name = "frequentlyUsed";
             this.frequentlyUsed.Size = new System.Drawing.Size(859, 216);
             this.frequentlyUsed.TabIndex = 2;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -174,15 +184,6 @@
             this.ürünler.Size = new System.Drawing.Size(81, 25);
             this.ürünler.TabIndex = 5;
             this.ürünler.Text = "Ürünler";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // OrderWindow
             // 

@@ -17,5 +17,6 @@ namespace AlisPark.Entities.Concrete
         public string CategoryName { get; set; } = string.Empty;
         public string CategoryDescription { get; set; }
         public int ProductStock { get; set; } = 0;
+        public decimal Price { get; set; } = 0.0m;
     }
 }

@@ -14,7 +14,8 @@ namespace AlisPark.Entities.Concrete
         [Key]
         public int TableId { get; set; }
         public List<TableEvent> TableEvents { get; set; }
-        public decimal Balance { get; set; }
+        public decimal TableBalance { get; set; }
+        public string TableName { get; set; }
         
     }
 }

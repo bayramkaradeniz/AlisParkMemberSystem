@@ -5,18 +5,29 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
+
+using Microsoft.VisualBasic;
 
 namespace AlisPark.WebFormsUI
 {
     public partial class OrderWindow : Form
     {
+        string oName;
+        int oAmount;
+        decimal oPrice;
+        List<Product> products;
+
         private IProductService _productService;
         private IOrderService _orderService;
+
+      //  public event Action ReloadMasaPanel;
         public OrderWindow()
         {
             InitializeComponent();
@@ -29,25 +40,35 @@ namespace AlisPark.WebFormsUI
 
         private void LoadProducts()
         {
-            List<Product> products = _productService.GetAll();
+            products = _productService.GetAll();
             foreach(Product product in products)
             {
-                RenderProduct(product.Name, product.ProductStock);
+                RenderProduct(product.Name, product.ProductStock, product.ProductStock);
             }   
         }
 
         private void AddToDgv(string productName, int productAmount, decimal productPrice)
         {
-            List<Product> products = _productService.GetAll();
+            products = _productService.GetAll();
             DataGridViewRow row = (DataGridViewRow)this.dgvProductList.Rows[0].Clone();
-            row.Cells["Ürün"].Value = productName;
-            row.Cells["Adet"].Value = (int)row.Cells["Adet"].Value + productAmount;
+            row.Cells[0].Value = productName;
+
+            if (row.Cells[1].Value == null) 
+                row.Cells[1].Value = (0 + productAmount);
+            else            
+                row.Cells[1].Value = ((int)row.Cells[1].Value + productAmount);
+
             decimal productAmountDecimal = Convert.ToDecimal(productAmount);
-            row.Cells["Fiyat"].Value = (int)row.Cells["Fiyat"].Value + (productAmountDecimal * productPrice);
+
+            if (row.Cells[2].Value == null)
+                row.Cells[2].Value = 0.0m + (productAmountDecimal * productPrice);
+            else
+                row.Cells[2].Value = (decimal)row.Cells[2].Value + (productAmountDecimal * productPrice);
+            
             dgvProductList.Rows.Add(row);
         }
 
-        public void RenderProduct(string pName = " ", int stockAmount = 0) // Load products into screen
+        public void RenderProduct(string pName = " ", int stockAmount = 0, decimal pPrice = 0.0m) // Load products into screen
         {
             System.Windows.Forms.Panel panel1 = new System.Windows.Forms.Panel();
             System.Windows.Forms.Button button3 = new System.Windows.Forms.Button();
@@ -113,13 +134,12 @@ namespace AlisPark.WebFormsUI
             button3.ForeColor = System.Drawing.Color.White;
             button3.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             button3.Location = new System.Drawing.Point(-3, -3);
-            button3.Name = "button3";
+            button3.Name = pName;
             button3.Size = new System.Drawing.Size(202, 102);
             button3.TabIndex = 0;
-            button3.Text = pName + "\nStok miktarı:" + stockAmount;
+            button3.Text = pName + "\nFiyat: " + pPrice + "\nStok miktarı: " + stockAmount;
             button3.UseVisualStyleBackColor = false;
             button3.Click += new System.EventHandler(AddOrder);
-
             // 
             // panel1
             // 
@@ -132,30 +152,63 @@ namespace AlisPark.WebFormsUI
         private void button2_Click(object sender, EventArgs e) // Send Order Button
         {
             // Read entire DGV
-            // Turn dgv rows into Product Entity
+            // Turn dgv rows into Order Entity - Don't maybe
             // Add them to database as reading continue...
 
             foreach (DataGridViewRow row in dgvProductList.Rows)
             {
-                string dgvPName = (string)row.Cells["Ürün"].Value;
-                int dgvPAmount = Convert.ToInt32(row.Cells["Adet"].Value);
-                decimal dgvPPrice = Convert.ToDecimal(row.Cells["Fiyat"].Value);
+                string dgvPName = (string)row.Cells[0].Value;
+                int dgvPAmount = Convert.ToInt32(row.Cells[1].Value);
+                decimal dgvPPrice = Convert.ToDecimal(row.Cells[2].Value);
 
                 Order order = new Order();
                 order.OrderName = dgvPName;
+                order.OrderAmount = dgvPAmount;
                 order.OrderDate = DateTime.Now;
-
+                order.OrderPrice = dgvPPrice * Convert.ToDecimal(oAmount);
+                order.Delivered = false;
                 _orderService.Add(order);
             }
+
+            //    PopulateDataGridView();
+            dgvProductList.Rows.Clear();
+            // Force Refresh MasaPanel.cs
+            this.Owner.Refresh();
         }
+
         private void AddOrder(object sender, EventArgs e)
         {
             //string dgvPName = (string)dgvProductList.Rows[0].Cells["Ürün"].Value;
             //int dgvPAmount = Convert.ToInt32(dgvProductList.Rows[0].Cells["Adet"].Value);
             //decimal dgvPPrice = Convert.ToDecimal(dgvProductList.Rows[0].Cells["Fiyat"].Value);
 
+            //Ask how much?
 
-            AddToDgv(dgvPName, dgvPAmount, dgvPPrice);
+            System.Windows.Forms.Button clickedButton = sender as System.Windows.Forms.Button;
+
+            string input = Interaction.InputBox(clickedButton.Name + " ürünün adedi:", "Adet", "1", 500, 500);
+
+            // check input
+            int num;
+            if (!int.TryParse(input, out num))
+            {
+                MessageBox.Show("Lütfen geçerli bir sayı giriniz."); 
+            }
+
+
+            Product product = _productService.GetProductByName(clickedButton.Name);
+
+            if (num > product.ProductStock)
+            {
+                MessageBox.Show("Lütfen mevcut stok adedinden (" + product.ProductStock + ") düşük bir adet giriniz.");
+            }
+
+             AddToDgv(clickedButton.Name, num, product.Price);
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+             _productService.GetProductsByProductName(searchBox.Text);
         }
     }
 }

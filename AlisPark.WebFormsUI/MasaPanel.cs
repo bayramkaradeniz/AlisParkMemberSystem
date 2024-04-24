@@ -1,7 +1,11 @@
-﻿using System;
+﻿using AlisPark.Business.Abstract;
+using AlisPark.Business.DependencyRevolvers.Ninject;
+using AlisPark.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +16,6 @@ namespace AlisPark.WebFormsUI
 {
     public partial class MasaPanel : Form
     {
-
         private Panel buttonPanel = new Panel();
         DataGridView dataGridView1 = new System.Windows.Forms.DataGridView();
 
@@ -20,13 +23,18 @@ namespace AlisPark.WebFormsUI
         private Button deleteRowButton = new Button();
 
 
+        IOrderService _orderService;
         public MasaPanel()
         {
             InitializeComponent();
+
+            _orderService = InstanceFactory.GetInstance<IOrderService>();
+
             InitDGV();
             SetupLayout();
             PopulateDataGridView();
         }
+
 
         private void PopulateDgv()
         {
@@ -171,24 +179,42 @@ namespace AlisPark.WebFormsUI
             //    DataGridViewCellFormattingEventHandler(
             //    songsDataGridView_CellFormatting);
         }
-
-        private void PopulateDataGridView()
+        public void PopulateDataGridView()
         {
+            List<Order> orders = new List<Order>();
+            orders = _orderService.GetOrdersByDelivered(); // get orders if they are not delivered yet
 
-            string[] row0 = { "11/22/1968", "29", "Türk kahvesi",
-             "The Beatles [White Album]" };
-            string[] row1 = { "11/22/1968", "5", "Fanta",
-             "AAA" };
-
-
-            dataGridView1.Rows.Add(row0);
-            dataGridView1.Rows.Add(row1);
+            foreach(Order order in orders)
+            {
+                AddToDgv(order.OrderName, order.OrderAmount, order.OrderPrice);
+            }
 
             dataGridView1.Columns[0].DisplayIndex = 0;
             dataGridView1.Columns[1].DisplayIndex = 1;
             dataGridView1.Columns[2].DisplayIndex = 2;
+           
         }
 
+        private void AddToDgv(string productName, int productAmount, decimal productPrice)
+        {
+            DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
+            row.Cells[0].Value = DateTime.Now;
+            row.Cells[1].Value = productName;
+
+            if (row.Cells[2].Value == null)
+                row.Cells[2].Value = (0 + productAmount);
+            else
+                row.Cells[2].Value = ((int)row.Cells[2].Value + productAmount);
+
+            decimal productAmountDecimal = Convert.ToDecimal(productAmount);
+
+            if (row.Cells[3].Value == null)
+                row.Cells[3].Value = 0.0m + (productAmountDecimal * productPrice);
+            else
+                row.Cells[3].Value = (decimal)row.Cells[2].Value + (productAmountDecimal * productPrice);
+
+            dataGridView1.Rows.Add(row);
+        }
 
         bool virgulClicked = false;
 
@@ -308,7 +334,18 @@ namespace AlisPark.WebFormsUI
         private void button14_Click(object sender, EventArgs e) // Order Panel Button
         {
             OrderWindow orderPanel = new OrderWindow();
+            orderPanel.Owner = this;
             orderPanel.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Load(object sender, PaintEventArgs e)
+        {
+            PopulateDataGridView();
         }
     }
 }

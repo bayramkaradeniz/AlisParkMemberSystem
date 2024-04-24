@@ -65,6 +65,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1216, 61);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label3
             // 
@@ -339,7 +340,7 @@
             this.fiyat1.Name = "fiyat1";
             this.fiyat1.Size = new System.Drawing.Size(365, 130);
             this.fiyat1.TabIndex = 0;
-            this.fiyat1.Text = "26,00";
+            this.fiyat1.Text = "00,00";
             this.fiyat1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // button14

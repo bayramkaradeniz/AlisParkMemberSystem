@@ -2,12 +2,14 @@
 using AlisPark.Business.Utilities;
 using AlisPark.Business.ValidationRules.FluentValidation;
 using AlisPark.DataAccess.Abstract;
+using AlisPark.DataAccess.Concrete;
 using AlisPark.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AlisPark.Business.Concrete
 {
@@ -36,6 +38,11 @@ namespace AlisPark.Business.Concrete
             return _productDal.GetAll(p => p.Name.ToLower().Contains(productName.ToLower()));
         }
 
+        public Product GetProductByName(string productName)
+        {
+            return _productDal.Get(p => p.Name.ToLower().Contains(productName.ToLower()));
+        }
+
         public void Add(Product product)
         {
         //    ValidationTools.FluentValidate(new ProductValidator(), member);
@@ -58,6 +65,17 @@ namespace AlisPark.Business.Concrete
             {
                 throw new Exception("Couldn't delete.");
             }
+        }
+
+        public void GetProductsByMemberName(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        List<Product> IProductService.GetProductsByProductName(string productName)
+        {
+            return _productDal.GetAll(p => p.Name.ToLower().Contains(productName.ToLower()));
         }
     }
 }

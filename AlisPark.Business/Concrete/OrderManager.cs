@@ -36,6 +36,11 @@ namespace AlisPark.Business.Concrete
             return _orderDal.GetAll(p => p.OrderName.ToLower().Contains(orderName.ToLower()));
         }
 
+        public List<Order> GetOrdersByDelivered()
+        {
+            return _orderDal.GetAll(p => p.Delivered == false);
+        }
+
         public void Add(Order order)
         {
             //    ValidationTools.FluentValidate(new ProductValidator(), member);

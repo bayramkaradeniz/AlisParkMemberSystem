@@ -21,6 +21,7 @@ namespace AlisPark.DataAccess.Concrete
         public DbSet<Company> CompanyUsers { get; set; }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

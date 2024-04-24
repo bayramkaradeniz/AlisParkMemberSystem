@@ -13,5 +13,7 @@ namespace AlisPark.Business.Abstract
         void Add(Product product);
         void Update(Product product);
         void Delete(Product product);
+        Product GetProductByName(string productName);
+        List<Product> GetProductsByProductName(string productName);
     }
 }

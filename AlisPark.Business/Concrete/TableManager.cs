@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using Table = AlisPark.Entities.Concrete.Table;
@@ -24,13 +25,31 @@ namespace AlisPark.Business.Concrete
         }
         public Table CreateTable()
         {
+            List<Table> tables = new List<Table>();
+            tables = _tableDal.GetAll(p => p.TableName.ToLower().Contains("masa".ToLower()));
+
+            int greatestTableNumber = 0;
+            foreach(Table tab in tables)
+            {                
+                int number = Convert.ToInt32(Regex.Match(tab.TableName, @"\d+").Value);
+                if (number > greatestTableNumber) 
+                    greatestTableNumber = number;
+            }
+
+
             List<TableEvent> tEvents = new List<TableEvent>();
             Table table = new Table();
-            table.TableId = 0;
-            table.Balance = 0.0m;
+         //   table.TableId = 0;
+            table.TableBalance = 0.0m;
             table.TableEvents = tEvents;
+            table.TableName = "MASA " + (greatestTableNumber + 1); // TODO: CUSTOMIZE "MASA" WORD
             _tableDal.Add(table);
             return table; 
+        }
+
+        public Table GetTableByTableName(string tableName)
+        {
+            return _tableDal.Get(p => p.TableName.ToLower().Contains(tableName.ToLower()));
         }
 
         public bool Reset(Table table)
