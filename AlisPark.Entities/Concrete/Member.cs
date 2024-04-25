@@ -13,6 +13,7 @@ namespace AlisPark.Entities.Concrete
         public string  MemberName { get; set; }
         public string MemberSurname { get; set; }
         public string MemberPhone { get; set; }
+        public string MemberMail { get; set; }
         public int CategoryId { get; set; }
         public decimal Balance { get; set; }
 

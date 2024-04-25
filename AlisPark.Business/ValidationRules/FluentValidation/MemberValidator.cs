@@ -1,10 +1,7 @@
 ﻿using AlisPark.Entities.Concrete;
 using FluentValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AlisPark.Business.ValidationRules.FluentValidation
 {
@@ -13,13 +10,22 @@ namespace AlisPark.Business.ValidationRules.FluentValidation
         //fluent validation
         public MemberValidator()
         {
-            RuleFor(p => p.MemberName).NotEmpty().WithMessage("Üye  ismi boş olamaz");
-            RuleFor(p => p.CategoryId).NotEmpty();
             RuleFor(p => p.Balance).NotEmpty();
-            RuleFor(p => p.MemberPhone).NotEmpty();
-            RuleFor(p => p.MemberSurname).NotEmpty();
+            RuleFor(p => p.MemberMail).Must(BeValidEmail).WithMessage("Geçerli bir e-posta adresi giriniz.");
 
-            RuleFor(p => p.Balance).GreaterThanOrEqualTo(100);
+            RuleFor(p => p.Balance).GreaterThan(-1).WithMessage("The Balance cannot be negative.");
+            RuleFor(p => p.Balance).Must(BeAnInteger).WithMessage("Product stock must be an integer number.");
+        }
+
+        private bool BeValidEmail(string email)
+        {
+            return email.Contains("@");
+        }
+
+        private bool BeAnInteger(decimal price)
+        {
+            return price % 1 != 0;
         }
     }
+   
 }

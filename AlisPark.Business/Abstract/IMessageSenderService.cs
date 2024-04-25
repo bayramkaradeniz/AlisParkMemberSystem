@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace AlisPark.Business.Abstract
 {
-    public interface IWorkerService
+    public interface IMessageSenderService
     {
-        List<Worker> GetAll();
-        void Add(Worker worker);
-        void Update(Worker worker);
-        void Delete(Worker worker);
+        Task SendMessageAsync(string description, Member member);
     }
 }

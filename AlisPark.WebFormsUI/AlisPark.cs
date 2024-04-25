@@ -1,15 +1,21 @@
 ﻿using AlisPark.Business.Abstract;
+using AlisPark.Business.Concrete;
 using AlisPark.Business.DependencyRevolvers.Ninject;
+using AlisPark.DataAccess.Concrete;
 using AlisPark.Entities.Concrete;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace AlisPark.WebFormsUI
 {
@@ -22,25 +28,50 @@ namespace AlisPark.WebFormsUI
             _categoryService = InstanceFactory.GetInstance<ICategoryService>();
             _logEntryService = InstanceFactory.GetInstance<ILogEntryService>();
             _workerService = InstanceFactory.GetInstance<IWorkerService>();
+            _messageSenderService = new MessageSenderManager();
+            _companyService = InstanceFactory.GetInstance<ICompanyService>();
 
         }
         private IMemberService _memberService;
         private ICategoryService _categoryService;
         private ILogEntryService _logEntryService;
         private IWorkerService _workerService;
+        private IMessageSenderService _messageSenderService;
+        private ICompanyService _companyService;
         private void AlisPark_Load(object sender, EventArgs e)
         {
-            
+            //CheckStock();
+            LoadCurrentWorker();
             LoadCategories();
             LoadMembers();
+        }
+
+        //private void CheckStock()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        private void LoadCurrentWorker()
+        {
+            using (var context = new AlisParkContext())
+            {
+                var AdminId = 1;
+                var UserOne = context.CompanyUsers.FirstOrDefault(k => k.AdminId == AdminId);
+                if (UserOne != null)
+                {
+                    tbxCurrentWorker.Text = UserOne.CurrentWorker;
+                }
+            }
+
         }
 
         private void LoadMembers()
         {
             dgvMember.DataSource = _memberService.GetAll();
+
         }
 
-        private void LoadCategories()
+        public void LoadCategories()
         {
 
             cbxCategory.DataSource = _categoryService.GetAll();
@@ -55,9 +86,6 @@ namespace AlisPark.WebFormsUI
             cbxCategoryUpdate.DisplayMember = "CategoryName";
             cbxCategoryUpdate.ValueMember = "CategoryId";
 
-            cbxCurrentWorker.DataSource = _workerService.GetAll();
-            cbxCurrentWorker.DisplayMember = "WorkerUserName";
-            cbxCurrentWorker.ValueMember = "WorkerId";
         }
 
         private void cbxCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,54 +118,114 @@ namespace AlisPark.WebFormsUI
         {
             var row = dgvMember.CurrentRow;
             tbxMemberNameUpdate.Text = row.Cells[1].Value.ToString();
-            cbxCategoryUpdate.SelectedValue = row.Cells[4].Value;
-            tbxBalanceUpdate.Text = row.Cells[5].Value.ToString();
+            cbxCategoryUpdate.SelectedValue = row.Cells[5].Value;
+            tbxBalanceUpdate.Text = row.Cells[6].Value.ToString();
             tbxMemberSurnameUpdate.Text = row.Cells[2].Value.ToString();
             tbxMemberPhoneUpdate.Text = row.Cells[3].Value.ToString();
-
+            tbxMemberMailUpdate.Text = row.Cells[4].Value.ToString();
         }
-
-        private void btnLog_Click(object sender, EventArgs e)
+        private bool VerifyPassword(string Password, string UserPw)
         {
-            //if (tbxUserNameLogLogin.Text == "admin" && tbxPasswordLogLogin.Text == "Huxx.09")
-            //{
-            //    Logs Logs = new Logs();
-            //    Logs.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Kullanıcı Adı veya Şifre Hatalı");
-            //}
-            Logs Logs = new Logs();
-            Logs.Show();
-
+            return Password == UserPw;
         }
 
-        private void btnMemberAdd_Click_1(object sender, EventArgs e)
+        private void btnLoginAdmin_Click(object sender, EventArgs e)
+        {
+            AdminPage adminPage = new AdminPage();
+            adminPage.Show();
+            //using (var context = new AlisParkContext())
+            //{
+
+            //    string Username = tbxUserNameLogLogin.Text;
+            //    var User = context.CompanyUsers.FirstOrDefault(p => p.CompanyAdminUsername == Username);
+
+            //    if (User != null)
+            //    {
+
+            //        string Password = tbxPasswordLogLogin.Text;
+
+            //        if (VerifyPassword(Password, User.CompanyAdminPassword))
+            //        {
+            //            AdminPage logs = new AdminPage();
+            //            logs.Show();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Parola Hatalı.");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Kullanıcı adı Hatalı.");
+            //    }
+            //}
+        }
+
+        private void btnMemberAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                _memberService.Add(new Member
+                if (cbxCategoryAdd.Text == "Vip")
                 {
-                    CategoryId = Convert.ToInt32(cbxCategoryAdd.SelectedValue),
-                    MemberName = tbxMemberNameAdd.Text,
-                    MemberSurname = tbxMemberSurnameAdd.Text,
-                    Balance = Convert.ToDecimal(tbxBalanceAdd.Text),
-                    MemberPhone = tbxMemberPhoneAdd.Text
-                });
-                _logEntryService.LogForAdd(new Worker
+                    _memberService.Add(new Member
+                    {
+                        CategoryId = Convert.ToInt32(cbxCategoryAdd.SelectedValue),
+                        MemberName = tbxMemberNameAdd.Text,
+                        MemberSurname = tbxMemberSurnameAdd.Text,
+                        Balance = Convert.ToDecimal(tbxBalanceAdd.Text)*Convert.ToDecimal(1.3),
+                        MemberPhone = tbxMemberPhoneAdd.Text,
+                        MemberMail = tbxMemberMailAdd.Text
+                    });
+                    _logEntryService.LogForAdd(new Worker
+                    {
+                        WorkerUserName = tbxCurrentWorker.Text,
+                    },
+                    new Member
+                    {
+                        MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                        MemberName = tbxMemberNameAdd.Text,
+                        MemberSurname = tbxMemberSurnameAdd.Text,
+                        Balance = Convert.ToDecimal(tbxBalanceAdd.Text),
+                    });
+                    _messageSenderService.SendMessageAsync($"Üyeliğiniz Oluşturularak Bakiyeniz {Convert.ToDecimal(tbxBalanceAdd.Text) * Convert.ToDecimal(1.3)} Olarak Belirlendi. X Cafe",
+                        new Member
+                        {
+                            MemberPhone = tbxMemberPhoneAdd.Text
+                        });
+                    MessageBox.Show("Üye Eklendi.");
+                    LoadMembers();
+                }
+                else
                 {
-                    WorkerUserName = cbxCurrentWorker.Text,
-                },
-                new Member
-                {
-                    MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
-                    MemberName = tbxMemberNameAdd.Text,
-                    MemberSurname = tbxMemberSurnameAdd.Text,
-                    Balance = Convert.ToDecimal(tbxBalanceAdd.Text),
-                });
-                MessageBox.Show("Üye Eklendi.");
-                LoadMembers();
+                    _memberService.Add(new Member
+                    {
+                        CategoryId = Convert.ToInt32(cbxCategoryAdd.SelectedValue),
+                        MemberName = tbxMemberNameAdd.Text,
+                        MemberSurname = tbxMemberSurnameAdd.Text,
+                        Balance = Convert.ToDecimal(tbxBalanceAdd.Text)*Convert.ToDecimal(1.15),
+                        MemberPhone = tbxMemberPhoneAdd.Text
+                    });
+                    _logEntryService.LogForAdd(new Worker
+                    {
+                        WorkerUserName = tbxCurrentWorker.Text,
+                    },
+                    new Member
+                    {
+                        MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                        MemberName = tbxMemberNameAdd.Text,
+                        MemberSurname = tbxMemberSurnameAdd.Text,
+                        Balance = Convert.ToDecimal(tbxBalanceAdd.Text) * Convert.ToDecimal(1.15),
+                    });
+                    _messageSenderService.SendMessageAsync($"Üyeliğiniz Oluşturularak Bakiyeniz {Convert.ToDecimal(tbxBalanceAdd.Text) * Convert.ToDecimal(1.15)} Olarak Belirlendi. X Cafe",
+                        new Member
+                        {
+                            MemberPhone = tbxMemberPhoneAdd.Text
+                        });
+                    MessageBox.Show("Üye Eklendi.");
+                    LoadMembers();
+                }
+                
+                
             }
             catch (Exception exception)
             {
@@ -145,52 +233,163 @@ namespace AlisPark.WebFormsUI
             }
         }
 
-        private void btnMemberUpdate_Click_1(object sender, EventArgs e)
+        private void btnMemberUpdate_Click(object sender, EventArgs e)
         {
-            _memberService.Update(new Member
+            try
             {
-                MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
-                MemberName = tbxMemberNameUpdate.Text,
-                MemberSurname = tbxMemberSurnameUpdate.Text,
-                CategoryId = Convert.ToInt32(cbxCategoryUpdate.SelectedValue),
-                Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
-                MemberPhone = tbxMemberPhoneUpdate.Text,
-            });
-            _logEntryService.LogForUpdate(new Worker
+                _memberService.Update(new Member
+                {
+                    MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                    MemberName = tbxMemberNameUpdate.Text,
+                    MemberSurname = tbxMemberSurnameUpdate.Text,
+                    CategoryId = Convert.ToInt32(cbxCategoryUpdate.SelectedValue),
+                    Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
+                    MemberMail = tbxMemberMailUpdate.Text
+                });
+                _logEntryService.LogForUpdate(new Worker
+                {
+                    WorkerUserName = tbxCurrentWorker.Text,
+                },
+                new Member
+                {
+                    MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                    MemberName = tbxMemberNameUpdate.Text,
+                    MemberSurname = tbxMemberSurnameUpdate.Text,
+                    Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
+                });
+                _messageSenderService.SendMessageAsync($"Bakiyeniz {tbxBalanceUpdate.Text} Olarak Güncellendi." +
+                    $"İşlem Bilginiz Dahilinde Değil İe Lütfen Bizi Arayın. X Cafe",
+                        new Member
+                        {
+                            MemberPhone = dgvMember.CurrentRow.Cells[3].Value.ToString()
+                        });
+                MessageBox.Show("Üye Güncellendi.");
+                LoadMembers();
+            }
+            catch (Exception exception)
             {
-                WorkerUserName = cbxCurrentWorker.Text,
-            },
-            new Member
-            {
-                MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
-                MemberName = tbxMemberNameUpdate.Text,
-                MemberSurname = tbxMemberSurnameUpdate.Text,
-                Balance = Convert.ToDecimal(tbxBalanceUpdate.Text),
-            });
-            MessageBox.Show("Üye Güncellendi.");
-            LoadMembers();
+                MessageBox.Show(exception.Message);
+            }
+            
         }
 
-        private void btnRemove_Click_1(object sender, EventArgs e)
+        private void btnChangeCurrentWorker_Click(object sender, EventArgs e)
         {
-            if (dgvMember.CurrentRow != null)
+            using (var context = new AlisParkContext())
             {
-                try
-                {
-                    _memberService.Delete(new Member
-                    {
-                        MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value)
-                    });
-                    //MessageBox.Show("Üye silindi!");
-                    LoadMembers();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
+                string kullaniciAdi = tbxCurrentWorker.Text;
 
+                var User = context.Workers.FirstOrDefault(k => k.WorkerUserName == kullaniciAdi);
+                var UserOne = context.CompanyUsers.FirstOrDefault(k => k.CompanyAdminUsername == kullaniciAdi);
+
+                var AdminId = 1;
+                var UserTwo = context.CompanyUsers.FirstOrDefault(k => k.AdminId == AdminId);
+
+                if (User != null)
+                {
+                    string Password = tbxCurrentWorkerPassword.Text;
+
+                    if (VerifyPassword(Password, User.WorkerPassword))
+                    {
+                        UserTwo.CurrentWorker = tbxCurrentWorker.Text;
+                        context.SaveChanges();
+                        AlisPark alisPark = new AlisPark();
+                        alisPark.Show();
+                        _logEntryService.LogForChange(tbxCurrentWorker.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Şifre Hatalı.");
+                    }
+                }
+                else if (UserOne != null)
+                {
+                    string Password = tbxCurrentWorkerPassword.Text;
+
+                    if (VerifyPassword(Password, UserOne.CompanyAdminPassword))
+                    {
+                        UserTwo.CurrentWorker = tbxCurrentWorkerPassword.Text;
+                        context.SaveChanges();
+                        AlisPark alisPark = new AlisPark();
+                        alisPark.Show();
+                        _logEntryService.LogForChange(tbxCurrentWorker.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Şifre Hatalı.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kullanıcı adı Hatalı.");
+                }
             }
         }
-    }
-}
 
+        private void btnDeductAccountFromBalance_Click(object sender, EventArgs e)
+        {
+            using (var context = new AlisParkContext())
+            {
+                var id = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value);
+                var User = context.Members.FirstOrDefault(k => k.MemberId == id);
+
+                if (User != null)
+                {
+                    User.Balance = Convert.ToDecimal(tbxBalanceUpdate.Text) - Convert.ToDecimal(tbxDeductAccountFromBalance.Text);
+                    context.SaveChanges();
+                }
+                _logEntryService.LogForUpdate(new Worker
+                {
+                    WorkerUserName = tbxCurrentWorker.Text,
+                },
+               new Member
+               {
+                   MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value),
+                   MemberName = tbxMemberNameUpdate.Text,
+                   MemberSurname = tbxMemberSurnameUpdate.Text,
+                   Balance = Convert.ToDecimal(tbxDeductAccountFromBalance.Text),
+               });
+                _messageSenderService.SendMessageAsync($"Bakiyenizden {tbxDeductAccountFromBalance.Text} Tl Hesap Kesildi." +
+                    $"İşlem Sonrası Bakiyeniz{dgvMember.CurrentRow.Cells[5].Value.ToString()} Tl." +
+                    $"İşlem Bilginiz Dahilinde Değil İe Lütfen Bizi Arayın. X Cafe",
+                    new Member
+                    {
+                        MemberPhone = dgvMember.CurrentRow.Cells[3].Value.ToString()
+                    });
+
+                MessageBox.Show("Üye  Bakiyesi Güncellendi.");
+                LoadMembers();
+            }
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"{dgvMember.CurrentRow.Cells[1].Value.ToString()} {dgvMember.CurrentRow.Cells[2].Value.ToString()} adlı ürünü silmek istediğinize emin misiniz?",
+                "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (dgvMember.CurrentRow != null)
+                {
+                    try
+                    {
+                        _memberService.Delete(new Member
+                        {
+                            MemberId = Convert.ToInt32(dgvMember.CurrentRow.Cells[0].Value)
+                        });
+                        //MessageBox.Show("Üye silindi!");
+                        LoadMembers();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                    }
+
+                }
+            }
+
+        }
+    }
+
+}

@@ -54,19 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\ICompanyDal.cs" />
     <Compile Include="Abstract\IEntityRepository.cs" />
     <Compile Include="Abstract\ILogEntryDal.cs" />
     <Compile Include="Abstract\IMemberDal.cs" />
     <Compile Include="Abstract\IWorkerDal.cs" />
     <Compile Include="Concrete\AlisParkContext.cs" />
     <Compile Include="Concrete\EfCategoryDal.cs" />
+    <Compile Include="Concrete\EfCompanyDal.cs" />
     <Compile Include="Concrete\EfEntityRepositoryBase.cs" />
     <Compile Include="Concrete\EfLogEntryDal.cs" />
     <Compile Include="Concrete\EfMemberDal.cs" />
     <Compile Include="Concrete\EfWorkerDal.cs" />
-    <Compile Include="Migrations\202308311056210_CreateDatabase.cs" />
-    <Compile Include="Migrations\202308311056210_CreateDatabase.designer.cs">
-      <DependentUpon>202308311056210_CreateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202309051104260_CreateDatabase.cs" />
+    <Compile Include="Migrations\202309051104260_CreateDatabase.designer.cs">
+      <DependentUpon>202309051104260_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -83,8 +85,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308311056210_CreateDatabase.resx">
-      <DependentUpon>202308311056210_CreateDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202309051104260_CreateDatabase.resx">
+      <DependentUpon>202309051104260_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

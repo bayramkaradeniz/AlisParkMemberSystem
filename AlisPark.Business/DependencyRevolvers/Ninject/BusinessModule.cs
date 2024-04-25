@@ -26,6 +26,9 @@ namespace AlisPark.Business.DependencyRevolvers.Ninject
 
             Bind<IWorkerService>().To<WorkerManager>().InSingletonScope();
             Bind<IWorkerDal>().To<EfWorkerDal>().InSingletonScope();
+            
+            Bind<ICompanyService>().To<CompanyManager>().InSingletonScope();
+            Bind<ICompanyDal>().To<EfCompanyDal>().InSingletonScope();
         }
     }
 }

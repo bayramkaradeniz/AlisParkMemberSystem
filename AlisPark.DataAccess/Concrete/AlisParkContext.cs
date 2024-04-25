@@ -19,6 +19,8 @@ namespace AlisPark.DataAccess.Concrete
 
         public DbSet<LogEntry> LogEntries { get; set; }
         public DbSet<Worker> Workers { get; set; }
+        public DbSet<Company> CompanyUsers { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,6 +29,7 @@ namespace AlisPark.DataAccess.Concrete
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new WorkerMap());
             modelBuilder.Configurations.Add(new LogEntryMap());
+            modelBuilder.Configurations.Add(new CompanyMap());
         }
     }
 }
