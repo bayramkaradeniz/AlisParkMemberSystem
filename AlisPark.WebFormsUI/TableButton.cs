@@ -45,8 +45,10 @@ namespace AlisPark.WebFormsUI
 
             foreach (var table in tables)
             {
+                if (table.Id == 4) table.IsOccupied = true;
                 var label = new Label()
                 {
+                    
                     Text = table.TableName,
                     BackColor = table.IsOccupied ? Color.IndianRed : Color.Green,
                     TextAlign = ContentAlignment.MiddleCenter,
@@ -60,12 +62,14 @@ namespace AlisPark.WebFormsUI
 
 
                 var contextMenu = new ContextMenu();
+
+                contextMenu.MenuItems.Add(new MenuItem("Masa Aç", TableMenuItem_Click));
+                contextMenu.MenuItems.Add(new MenuItem("Masa Kapat", TableMenuItem_Click));
                 contextMenu.MenuItems.Add(new MenuItem("Sipariş Al", TableMenuItem_Click));
                 contextMenu.MenuItems.Add(new MenuItem("Masayı Taşı", TableMenuItem_Click));
                 contextMenu.MenuItems.Add(new MenuItem("Masa Detayı", TableMenuItem_Click));
                 contextMenu.MenuItems.Add(new MenuItem("Süreli Masa Aç", TableMenuItem_Click));
                 contextMenu.MenuItems.Add(new MenuItem("Masayı Süreliye Çevir", TableMenuItem_Click));
-
 
                 label.MouseDoubleClick += (sender, e) =>
                 {
@@ -110,6 +114,9 @@ namespace AlisPark.WebFormsUI
                     OrderWindow orderPanel = new OrderWindow(thisTable, bindingSource);
                     orderPanel.Owner = this;
                     orderPanel.Show();
+                    break;
+                case "Masa Kapat":
+                    
                     break;
                 case "Masayı Taşı":
 

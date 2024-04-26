@@ -19,7 +19,7 @@ namespace AlisPark.WebFormsUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TableButton());
+            Application.Run(new WareHouseHome());
         }
     }
 }

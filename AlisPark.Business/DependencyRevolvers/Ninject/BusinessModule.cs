@@ -34,18 +34,6 @@ namespace AlisPark.Business.DependencyRevolvers.Ninject
             Bind<IProductService>().To<ProductManager>().InSingletonScope();
             Bind<IProductDal>().To<EfProductDal>().InSingletonScope();
 
-            Bind<ICategoryService>().To<CategoryManager>().InSingletonScope();
-            Bind<ICategoryDal>().To<EfCategoryDal>().InSingletonScope();
-
-            Bind<ILogEntryService>().To<LogEntryManager>().InSingletonScope();
-            Bind<ILogEntryDal>().To<EfLogEntryDal>().InSingletonScope();
-
-            Bind<IWorkerService>().To<WorkerManager>().InSingletonScope();
-            Bind<IWorkerDal>().To<EfWorkerDal>().InSingletonScope();
-
-            Bind<ICompanyService>().To<CompanyManager>().InSingletonScope();
-            Bind<ICompanyDal>().To<EfCompanyDal>().InSingletonScope();
-
             Bind<IMailSenderService>().To<MailManager>().InSingletonScope();
             Bind<IMailSenderDal>().To<EfMailSender>().InSingletonScope();
 

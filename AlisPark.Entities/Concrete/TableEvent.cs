@@ -10,16 +10,13 @@ namespace AlisPark.Entities.Concrete
 {
     public class TableEvent : IEntity
     {
-
         public int Id { get; set; }
         public DateTime EventTime { get; set; }
         public string EventDescription { get; set; }
         public DateTime OpeningTime { get; set; }
         public DateTime ClosingTime { get; set; }
-
         public int TableId { get; set; }
-        public Table Table { get; set; } // Bir olay sadece bir tablo ile ilişkilendirilmiştir
-       
+        public Table Table { get; set; } 
+        // Bir olay sadece bir tablo ile ilişkilendirilmiştir       
     }
-
 }

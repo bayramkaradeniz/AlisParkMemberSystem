@@ -33,7 +33,6 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.productName = new System.Windows.Forms.Label();
             this.frequentlyUsed = new System.Windows.Forms.FlowLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvProductList = new System.Windows.Forms.DataGridView();
@@ -44,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SıkKullanılanlar = new System.Windows.Forms.Label();
             this.ürünler = new System.Windows.Forms.Label();
-            this.frequentlyUsed.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             this.SuspendLayout();
@@ -82,20 +80,10 @@
             // 
             // frequentlyUsed
             // 
-            this.frequentlyUsed.Controls.Add(this.button3);
             this.frequentlyUsed.Location = new System.Drawing.Point(12, 82);
             this.frequentlyUsed.Name = "frequentlyUsed";
             this.frequentlyUsed.Size = new System.Drawing.Size(859, 216);
             this.frequentlyUsed.TabIndex = 2;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -201,7 +189,6 @@
             this.Name = "OrderWindow";
             this.Text = "OrderWindow";
             this.Load += new System.EventHandler(this.OrderWindow_Load);
-            this.frequentlyUsed.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
             this.ResumeLayout(false);
@@ -226,6 +213,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPrice;
         private System.Windows.Forms.Label SıkKullanılanlar;
         private System.Windows.Forms.Label ürünler;
-        private System.Windows.Forms.Button button3;
     }
 }

@@ -46,6 +46,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -58,8 +59,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1314, 656);
-            this.splitContainer1.SplitterDistance = 580;
+            this.splitContainer1.Size = new System.Drawing.Size(986, 533);
+            this.splitContainer1.SplitterDistance = 435;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -69,24 +71,28 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnLogIn);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(84, 167);
+            this.groupBox1.Location = new System.Drawing.Point(63, 136);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(404, 464);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(303, 377);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
             // tbxPasswordLogIn
             // 
-            this.tbxPasswordLogIn.Location = new System.Drawing.Point(21, 209);
+            this.tbxPasswordLogIn.Location = new System.Drawing.Point(16, 170);
+            this.tbxPasswordLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxPasswordLogIn.Name = "tbxPasswordLogIn";
-            this.tbxPasswordLogIn.Size = new System.Drawing.Size(357, 22);
+            this.tbxPasswordLogIn.Size = new System.Drawing.Size(269, 20);
             this.tbxPasswordLogIn.TabIndex = 7;
             // 
             // tbxUsernameLogIn
             // 
-            this.tbxUsernameLogIn.Location = new System.Drawing.Point(21, 141);
+            this.tbxUsernameLogIn.Location = new System.Drawing.Point(16, 115);
+            this.tbxUsernameLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxUsernameLogIn.Name = "tbxUsernameLogIn";
-            this.tbxUsernameLogIn.Size = new System.Drawing.Size(357, 22);
+            this.tbxUsernameLogIn.Size = new System.Drawing.Size(269, 20);
             this.tbxUsernameLogIn.TabIndex = 6;
             // 
             // label2
@@ -98,10 +104,11 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.Location = new System.Drawing.Point(18, 105);
+            this.label2.Location = new System.Drawing.Point(14, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(107, 24);
+            this.label2.Size = new System.Drawing.Size(80, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Username";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,11 +116,12 @@
             // btnLogIn
             // 
             this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnLogIn.Location = new System.Drawing.Point(120, 248);
+            this.btnLogIn.Location = new System.Drawing.Point(90, 202);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(102, 33);
+            this.btnLogIn.Size = new System.Drawing.Size(76, 27);
             this.btnLogIn.TabIndex = 5;
-            this.btnLogIn.Text = "Giriş Yap";
+            this.btnLogIn.Text = "Login";
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click_1);
             // 
@@ -126,10 +134,11 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Location = new System.Drawing.Point(18, 175);
+            this.label3.Location = new System.Drawing.Point(14, 142);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(107, 24);
+            this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Password";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,20 +152,22 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(3, 79);
+            this.label1.Location = new System.Drawing.Point(2, 64);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(574, 59);
+            this.label1.Size = new System.Drawing.Size(430, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Log In";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LogAndReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 656);
+            this.ClientSize = new System.Drawing.Size(986, 533);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LogAndReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giriş Yap";

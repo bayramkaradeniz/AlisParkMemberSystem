@@ -75,8 +75,10 @@ namespace AlisPark.WebFormsUI
                 row.Cells[2].Value = (decimal)row.Cells[2].Value + (productAmountDecimal * productPrice);
             
             dgvProductList.Rows.Add(row);
-            dgvProductList.DataSource = ((DataRowView)dgvProductList.Rows[0].DataBoundItem).DataView.Table;
-            bSource.DataSource = dgvProductList.DataSource;
+
+            //dgvProductList.DataSource = ((DataRowView)dgvProductList.Rows[0].DataBoundItem).DataView.Table;
+            //bSource.DataSource = dgvProductList.DataSource;
+
         }
 
         public void RenderProduct(string pName = " ", int stockAmount = 0, decimal pPrice = 0.0m) // Load products into screen

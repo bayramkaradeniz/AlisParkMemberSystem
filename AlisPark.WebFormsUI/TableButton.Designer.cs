@@ -30,7 +30,6 @@
         {
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.fiyat1 = new System.Windows.Forms.TextBox();
@@ -52,6 +51,10 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -67,7 +70,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.fiyat1);
@@ -77,13 +79,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(889, 656);
             this.panel1.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 23);
-            this.label4.TabIndex = 0;
             // 
             // label2
             // 
@@ -352,11 +347,51 @@
             this.button12.Text = "<";
             this.button12.UseVisualStyleBackColor = false;
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(9, 703);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(164, 23);
+            this.button15.TabIndex = 2;
+            this.button15.Text = "Masa Oluştur";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(451, 703);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(122, 23);
+            this.button16.TabIndex = 3;
+            this.button16.Text = "Mailler";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(179, 703);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(122, 23);
+            this.button17.TabIndex = 4;
+            this.button17.Text = "Ürünler";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(307, 703);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(138, 23);
+            this.button18.TabIndex = 5;
+            this.button18.Text = "Kayıtlar";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
             // TableButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1827, 749);
+            this.Controls.Add(this.button16);
+            this.Controls.Add(this.button18);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button15);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flpTable);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -397,6 +432,9 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
     }
 }
